@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<html lang="pt-BR"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dashboard CAUC — Maranhão</title>
 <style>
 :root{
@@ -463,7 +462,7 @@ body{
       </div>
     </div>
     <div class="header-right">
-      <span class="badge" id="dataLabel">📅 09/06/2026</span>
+      <span class="badge" id="dataLabel">📅 10/06/2026</span>
       <span class="badge live">Dados carregados</span>
     </div>
   </div>
@@ -472,16 +471,16 @@ body{
 <div class="upload-bar">
   <div class="container upload-wrap">
     <div class="upload-zone" id="dropzone">
-      <input type="file" id="fileInput" accept=".csv,text/csv,text/plain" hidden>
+      <input type="file" id="fileInput" accept=".csv,text/csv,text/plain" hidden="">
       <div class="upload-zone-icon">🔄</div>
       <div class="upload-zone-text">
         <div class="upload-zone-title">Atualizar com novo relatório (CSV)</div>
         <div class="upload-zone-hint">Arraste o CSV do dia aqui para substituir os dados visualizados</div>
       </div>
     </div>
-    <div class="file-info" id="fileInfo">Snapshot: 09/06/2026 · 272 órgãos</div>
+    <div class="file-info" id="fileInfo">Snapshot: 10/06/2026 · 272 órgãos</div>
     <div class="actions-bar">
-      <button class="btn btn-publish" id="btnPublish" disabled title="Carregue um CSV primeiro">🚀 Publicar atualização</button>
+      <button class="btn btn-publish" id="btnPublish" title="Gerar HTML pronto para publicar no GitHub">🚀 Publicar atualização</button>
       <button class="btn btn-secondary" id="btnXlsx">⬇️ Excel</button>
       <button class="btn btn-ghost" id="btnPrint">🖨️ Imprimir</button>
     </div>
@@ -490,9 +489,9 @@ body{
 
 <main class="container">
 
-  <div class="update-banner hidden" id="updateBanner">
+  <div class="update-banner" id="updateBanner">
     <span>🔄</span>
-    <span id="updateBannerText">Dashboard atualizado com novo relatório!</span>
+    <span id="updateBannerText">Dashboard atualizado com "Situação dos Órgãos e Entidades do Ente Federativo - Maranhão - 10-06-2026.csv" (10/06/2026)</span>
     <button class="update-banner-close" id="updateBannerClose">✕</button>
   </div>
 
@@ -503,9 +502,9 @@ body{
         <span class="kpi-label">Órgãos no relatório</span>
         <span class="kpi-icon">🏛️</span>
       </div>
-      <div class="kpi-value" id="kpiTotal">0</div>
+      <div class="kpi-value" id="kpiTotal">272</div>
       <div class="kpi-meta">
-        <span id="kpiDirecta">0</span> direta(s) · <span id="kpiIndirecta">0</span> indireta(s)
+        <span id="kpiDirecta">204</span> direta(s) · <span id="kpiIndirecta">36</span> indireta(s)
       </div>
     </div>
 
@@ -514,9 +513,9 @@ body{
         <span class="kpi-label">Regularidade "A Comprovar"</span>
         <span class="kpi-icon">⚠️</span>
       </div>
-      <div class="kpi-value" id="kpiAComprovar">0</div>
+      <div class="kpi-value" id="kpiAComprovar">29</div>
       <div class="kpi-meta">
-        <span class="kpi-pct warn" id="kpiAComprovarPct">0%</span> do total
+        <span class="kpi-pct warn" id="kpiAComprovarPct">10.7%</span> do total
       </div>
     </div>
 
@@ -525,9 +524,9 @@ body{
         <span class="kpi-label">Pendências (itens)</span>
         <span class="kpi-icon">🚨</span>
       </div>
-      <div class="kpi-value" id="kpiPendencias">0</div>
+      <div class="kpi-value" id="kpiPendencias">46</div>
       <div class="kpi-meta">
-        <span id="kpiMediaPorOrgao">0</span> por órgão (média)
+        <span id="kpiMediaPorOrgao">1.6</span> por órgão (média)
       </div>
     </div>
 
@@ -536,9 +535,9 @@ body{
         <span class="kpi-label">Comprovados</span>
         <span class="kpi-icon">✅</span>
       </div>
-      <div class="kpi-value" id="kpiComprovados">0</div>
+      <div class="kpi-value" id="kpiComprovados">211</div>
       <div class="kpi-meta">
-        <span class="kpi-pct success" id="kpiComprovadosPct">0%</span> do total
+        <span class="kpi-pct success" id="kpiComprovadosPct">77.6%</span> do total
       </div>
     </div>
 
@@ -547,7 +546,7 @@ body{
         <span class="kpi-label">Códigos pendentes</span>
         <span class="kpi-icon">🔢</span>
       </div>
-      <div class="kpi-value" id="kpiCodigos">0</div>
+      <div class="kpi-value" id="kpiCodigos">7</div>
       <div class="kpi-meta">
         de 30 itens CAUC monitorados
       </div>
@@ -566,9 +565,51 @@ body{
         <span class="section-hint">Total de órgãos com pendência em cada item</span>
       </div>
       <div class="chart-container">
-        <canvas id="chartCodigos"></canvas>
+        <canvas id="chartCodigos" style="box-sizing: border-box; display: block; height: 380px; width: 624px;" width="624" height="380"></canvas>
       </div>
-      <div class="code-list" id="codeList"></div>
+      <div class="code-list" id="codeList">
+    <div class="code-row">
+      <span class="code-tag">1.5</span>
+      <span class="code-desc" title="Regularidade perante o Poder Público Federal">Regularidade perante o Poder Público Federal</span>
+      <span class="code-count">19</span>
+    </div>
+  
+    <div class="code-row">
+      <span class="code-tag">1.1</span>
+      <span class="code-desc" title="Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União">Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União</span>
+      <span class="code-count">19</span>
+    </div>
+  
+    <div class="code-row">
+      <span class="code-tag">1.3</span>
+      <span class="code-desc" title="Regularidade quanto a Contribuições para o FGTS">Regularidade quanto a Contribuições para o FGTS</span>
+      <span class="code-count">2</span>
+    </div>
+  
+    <div class="code-row">
+      <span class="code-tag">1.2</span>
+      <span class="code-desc" title="Regularidade no pagamento de precatórios judiciais">Regularidade no pagamento de precatórios judiciais</span>
+      <span class="code-count">2</span>
+    </div>
+  
+    <div class="code-row">
+      <span class="code-tag">1.4</span>
+      <span class="code-desc" title="Adimplência Financeira em Empréstimos e Financiamentos concedidos pela União">Adimplência Financeira em Empréstimos e Financiamentos concedidos pela União</span>
+      <span class="code-count">2</span>
+    </div>
+  
+    <div class="code-row">
+      <span class="code-tag">3.2.3</span>
+      <span class="code-desc" title="RREO — Anexo 8 ao Siope">RREO — Anexo 8 ao Siope</span>
+      <span class="code-count">1</span>
+    </div>
+  
+    <div class="code-row">
+      <span class="code-tag">2.1.1</span>
+      <span class="code-desc" title="Prestação de Contas de Recursos Federais - SIAFI/Subsistema Transferências">Prestação de Contas de Recursos Federais - SIAFI/Subsistema Transferências</span>
+      <span class="code-count">1</span>
+    </div>
+  </div>
     </div>
 
     <div class="section">
@@ -577,9 +618,270 @@ body{
           <span class="icon">🏆</span>
           Ranking de Órgãos com Pendências
         </div>
-        <span class="section-hint" id="rankingHint">0 órgãos</span>
+        <span class="section-hint" id="rankingHint">29 órgão(s) com pendência</span>
       </div>
-      <div class="ranking-list" id="rankingList"></div>
+      <div class="ranking-list" id="rankingList">
+      <div class="ranking-item">
+        <div class="ranking-pos gold">1</div>
+        <div class="ranking-info">
+          <div class="ranking-name">ASSOCIACAO DOS CONSUMIDORES DE ENERGIA, AGUA,ESGOTO,TELEFONIA, PROPRIETARIOS DE VEICULOS AUTOMOTORES, USUARIOS DE SERVICOS PUBLICOS E PARTICULAR<span class="ranking-tipo Indireta">Indireta</span></div>
+          <div class="ranking-meta">15.201.913/0001-43 · códigos: 1.1, 1.2, 1.4, 1.5</div>
+        </div>
+        <div class="ranking-count">4</div>
+      </div>
+    
+      <div class="ranking-item">
+        <div class="ranking-pos silver">2</div>
+        <div class="ranking-info">
+          <div class="ranking-name">EMPRESA MARANHENSE DE SERVICOS HOSPITALARES - EMSERH<span class="ranking-tipo Indireta">Indireta</span></div>
+          <div class="ranking-meta">18.519.709/0001-63 · códigos: 1.1, 1.3, 1.5</div>
+        </div>
+        <div class="ranking-count">3</div>
+      </div>
+    
+      <div class="ranking-item">
+        <div class="ranking-pos bronze">3</div>
+        <div class="ranking-info">
+          <div class="ranking-name">MUNICIPIO DE SAO LUIS - ESCRITORIO TECNICO DE ADMINISTRACAO MUNICIPAL<span class="ranking-tipo Indireta">Indireta</span></div>
+          <div class="ranking-meta">06.048.904/0001-73 · códigos: 1.1, 1.3, 1.5</div>
+        </div>
+        <div class="ranking-count">3</div>
+      </div>
+    
+      <div class="ranking-item">
+        <div class="ranking-pos ">4</div>
+        <div class="ranking-info">
+          <div class="ranking-name">AGENCIA ESTADUAL DE DEFESA AGROPECUARIA DO MARANHAO<span class="ranking-tipo Indireta">Indireta</span></div>
+          <div class="ranking-meta">05.057.657/0001-09 · códigos: 1.1, 1.5</div>
+        </div>
+        <div class="ranking-count">2</div>
+      </div>
+    
+      <div class="ranking-item">
+        <div class="ranking-pos ">5</div>
+        <div class="ranking-info">
+          <div class="ranking-name">AGENCIA EXECUTIVA METROPOLITANA DO LESTE MARANHENSE - AGEMLESTE<span class="ranking-tipo Indireta">Indireta</span></div>
+          <div class="ranking-meta">60.794.030/0001-49 · códigos: 1.1, 1.5</div>
+        </div>
+        <div class="ranking-count">2</div>
+      </div>
+    
+      <div class="ranking-item">
+        <div class="ranking-pos ">6</div>
+        <div class="ranking-info">
+          <div class="ranking-name">AGENCIA EXECUTIVA METROPOLITANA DO SUDOESTE MARANHENSE - AGEMSUL<span class="ranking-tipo Indireta">Indireta</span></div>
+          <div class="ranking-meta">29.180.696/0001-67 · códigos: 1.1, 1.5</div>
+        </div>
+        <div class="ranking-count">2</div>
+      </div>
+    
+      <div class="ranking-item">
+        <div class="ranking-pos ">7</div>
+        <div class="ranking-info">
+          <div class="ranking-name">COMPANHIA DE SANEAMENTO AMBIENTAL DO MARANHAO-CAEMA<span class="ranking-tipo Indireta">Indireta</span></div>
+          <div class="ranking-meta">06.274.757/0001-50 · códigos: 1.1, 1.5</div>
+        </div>
+        <div class="ranking-count">2</div>
+      </div>
+    
+      <div class="ranking-item">
+        <div class="ranking-pos ">8</div>
+        <div class="ranking-info">
+          <div class="ranking-name">DEPARTAMENTO ESTADUAL DE TRANSITO<span class="ranking-tipo Indireta">Indireta</span></div>
+          <div class="ranking-meta">06.293.120/0001-00 · códigos: 1.1, 1.5</div>
+        </div>
+        <div class="ranking-count">2</div>
+      </div>
+    
+      <div class="ranking-item">
+        <div class="ranking-pos ">9</div>
+        <div class="ranking-info">
+          <div class="ranking-name">FUNDACAO DA CRIANCA E DO ADOLESCENTE<span class="ranking-tipo Indireta">Indireta</span></div>
+          <div class="ranking-meta">05.632.559/0001-58 · códigos: 1.1, 1.5</div>
+        </div>
+        <div class="ranking-count">2</div>
+      </div>
+    
+      <div class="ranking-item">
+        <div class="ranking-pos ">10</div>
+        <div class="ranking-info">
+          <div class="ranking-name">FUNDACAO NICE LOBAO<span class="ranking-tipo Indireta">Indireta</span></div>
+          <div class="ranking-meta">97.357.420/0001-61 · códigos: 1.1, 1.5</div>
+        </div>
+        <div class="ranking-count">2</div>
+      </div>
+    
+      <div class="ranking-item">
+        <div class="ranking-pos ">11</div>
+        <div class="ranking-info">
+          <div class="ranking-name">INSTITUTO ESTADUAL DE EDUCACAO, CIENCIA E TECNOLOGIA DO MARANHAO-IEMA<span class="ranking-tipo Indireta">Indireta</span></div>
+          <div class="ranking-meta">05.849.024/0001-33 · códigos: 1.1, 1.5</div>
+        </div>
+        <div class="ranking-count">2</div>
+      </div>
+    
+      <div class="ranking-item">
+        <div class="ranking-pos ">12</div>
+        <div class="ranking-info">
+          <div class="ranking-name">JUNTA COMERCIAL DO ESTADO DO MARANHAO<span class="ranking-tipo Indireta">Indireta</span></div>
+          <div class="ranking-meta">05.289.160/0001-16 · códigos: 1.1, 1.5</div>
+        </div>
+        <div class="ranking-count">2</div>
+      </div>
+    
+      <div class="ranking-item">
+        <div class="ranking-pos ">13</div>
+        <div class="ranking-info">
+          <div class="ranking-name">CONSORCIO INTERESTADUAL DE DESENVOLVIMENTO SUSTENTAVEL DA AMAZONIA LEGAL<span class="ranking-tipo Indireta">Indireta</span></div>
+          <div class="ranking-meta">33.733.453/0001-86 · códigos: 1.2, 1.4</div>
+        </div>
+        <div class="ranking-count">2</div>
+      </div>
+    
+      <div class="ranking-item">
+        <div class="ranking-pos ">14</div>
+        <div class="ranking-info">
+          <div class="ranking-name">ESTADO DO MARANHAO<span class="ranking-tipo Direta">Direta</span></div>
+          <div class="ranking-meta">06.354.468/0001-60 · códigos: 3.2.3</div>
+        </div>
+        <div class="ranking-count">1</div>
+      </div>
+    
+      <div class="ranking-item">
+        <div class="ranking-pos ">15</div>
+        <div class="ranking-info">
+          <div class="ranking-name">ESTADO DO MARANHAO - SECRETARIA DE ESTADO DA SAUDE<span class="ranking-tipo Direta">Direta</span></div>
+          <div class="ranking-meta">02.973.240/0001-06 · códigos: 1.5</div>
+        </div>
+        <div class="ranking-count">1</div>
+      </div>
+    
+      <div class="ranking-item">
+        <div class="ranking-pos ">16</div>
+        <div class="ranking-info">
+          <div class="ranking-name">ESTADO DO MARANHAO - SECRETARIA DE ESTADO DO DESENVOLVIMENTO SOCIAL<span class="ranking-tipo Direta">Direta</span></div>
+          <div class="ranking-meta">02.940.097/0001-48 · códigos: 2.1.1</div>
+        </div>
+        <div class="ranking-count">1</div>
+      </div>
+    
+      <div class="ranking-item">
+        <div class="ranking-pos ">17</div>
+        <div class="ranking-info">
+          <div class="ranking-name">ESTADO DO MARANHAO - UNIDADE MISTA DE CARUTAPERA<span class="ranking-tipo Direta">Direta</span></div>
+          <div class="ranking-meta">04.902.288/0001-40 · códigos: 1.5</div>
+        </div>
+        <div class="ranking-count">1</div>
+      </div>
+    
+      <div class="ranking-item">
+        <div class="ranking-pos ">18</div>
+        <div class="ranking-info">
+          <div class="ranking-name">SECRETARIA DE ESTADO DA AGRICULTURA E PECUARIA - SAGRIMA<span class="ranking-tipo Direta">Direta</span></div>
+          <div class="ranking-meta">05.025.553/0001-12 · códigos: 1.5</div>
+        </div>
+        <div class="ranking-count">1</div>
+      </div>
+    
+      <div class="ranking-item">
+        <div class="ranking-pos ">19</div>
+        <div class="ranking-info">
+          <div class="ranking-name">SECRETARIA DE ESTADO DE IGUALDADE RACIAL SEIR<span class="ranking-tipo Direta">Direta</span></div>
+          <div class="ranking-meta">65.529.288/0001-31 · códigos: 1.1</div>
+        </div>
+        <div class="ranking-count">1</div>
+      </div>
+    
+      <div class="ranking-item">
+        <div class="ranking-pos ">20</div>
+        <div class="ranking-info">
+          <div class="ranking-name">AGENCIA ESTADUAL DE MOBILIDADE URBANA E SERVICOS PUBLICOS - MOB<span class="ranking-tipo Indireta">Indireta</span></div>
+          <div class="ranking-meta">08.578.592/0001-35 · códigos: 1.1</div>
+        </div>
+        <div class="ranking-count">1</div>
+      </div>
+    
+      <div class="ranking-item">
+        <div class="ranking-pos ">21</div>
+        <div class="ranking-info">
+          <div class="ranking-name">AGENCIA ESTADUAL DE PESQUISA AGROPECUARIA E EXTENSAO RURAL DO MARANHAO - AGERP / MA<span class="ranking-tipo Indireta">Indireta</span></div>
+          <div class="ranking-meta">08.593.102/0001-70 · códigos: 1.5</div>
+        </div>
+        <div class="ranking-count">1</div>
+      </div>
+    
+      <div class="ranking-item">
+        <div class="ranking-pos ">22</div>
+        <div class="ranking-info">
+          <div class="ranking-name">AGENCIA REGULADORA DE SERVICOS PUBLICOS DO MARANHAO<span class="ranking-tipo Indireta">Indireta</span></div>
+          <div class="ranking-meta">05.694.533/0001-34 · códigos: 1.1</div>
+        </div>
+        <div class="ranking-count">1</div>
+      </div>
+    
+      <div class="ranking-item">
+        <div class="ranking-pos ">23</div>
+        <div class="ranking-info">
+          <div class="ranking-name">FUND CULT ASSIST E ECOLOGICA O HOMEM E A NATUREZA<span class="ranking-tipo Indireta">Indireta</span></div>
+          <div class="ranking-meta">69.382.307/0001-09 · códigos: 1.1</div>
+        </div>
+        <div class="ranking-count">1</div>
+      </div>
+    
+      <div class="ranking-item">
+        <div class="ranking-pos ">24</div>
+        <div class="ranking-info">
+          <div class="ranking-name">FUNDACAO ESCOLA DE GOVERNO DO MARANHAO - FUNDACAO EGMA<span class="ranking-tipo Indireta">Indireta</span></div>
+          <div class="ranking-meta">59.825.955/0001-20 · códigos: 1.1</div>
+        </div>
+        <div class="ranking-count">1</div>
+      </div>
+    
+      <div class="ranking-item">
+        <div class="ranking-pos ">25</div>
+        <div class="ranking-info">
+          <div class="ranking-name">FUNDO ESTADUAL DE PROTECAO E DEFESA DOS DIREITOS DO CONSUMIDOR - PROCON<span class="ranking-tipo Indireta">Indireta</span></div>
+          <div class="ranking-meta">07.450.928/0001-17 · códigos: 1.1</div>
+        </div>
+        <div class="ranking-count">1</div>
+      </div>
+    
+      <div class="ranking-item">
+        <div class="ranking-pos ">26</div>
+        <div class="ranking-info">
+          <div class="ranking-name">INSTITUTO DE METROLOGIA E QUALIDADE INDUSTRIAL DO MARANHAO - INMEQ/MA<span class="ranking-tipo Indireta">Indireta</span></div>
+          <div class="ranking-meta">01.596.450/0001-51 · códigos: 1.5</div>
+        </div>
+        <div class="ranking-count">1</div>
+      </div>
+    
+      <div class="ranking-item">
+        <div class="ranking-pos ">27</div>
+        <div class="ranking-info">
+          <div class="ranking-name">INSTITUTO DE PROMOCAO E DEFESA DO CIDADAO E CONSUMIDOR DO ESTADO DO MARANHAO - PROCON/MA<span class="ranking-tipo Indireta">Indireta</span></div>
+          <div class="ranking-meta">23.284.838/0001-50 · códigos: 1.5</div>
+        </div>
+        <div class="ranking-count">1</div>
+      </div>
+    
+      <div class="ranking-item">
+        <div class="ranking-pos ">28</div>
+        <div class="ranking-info">
+          <div class="ranking-name">INSTITUTO MARANHENSE DE ESTUDOS SOCIOECONOMICO E CARTOGRAFICO - IMESC<span class="ranking-tipo Indireta">Indireta</span></div>
+          <div class="ranking-meta">08.597.004/0001-00 · códigos: 1.1</div>
+        </div>
+        <div class="ranking-count">1</div>
+      </div>
+    
+      <div class="ranking-item">
+        <div class="ranking-pos ">29</div>
+        <div class="ranking-info">
+          <div class="ranking-name">MARANHAO PARCERIAS S.A<span class="ranking-tipo Indireta">Indireta</span></div>
+          <div class="ranking-meta">06.281.794/0001-95 · códigos: 1.5</div>
+        </div>
+        <div class="ranking-count">1</div>
+      </div>
+    </div>
     </div>
 
   </div>
@@ -704,11 +1006,603 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
 <script>
 /* === DADOS INICIAIS EMBUTIDOS DO RELATÓRIO === */
 const INITIAL_DATA = {
-  dataPesquisa: "09/06/2026",
-  totals: {"total": 272, "direta": 204, "indireta": 36, "aComprovar": 29, "aComprovarPct": 10.7, "comprovados": 211, "comprovadosPct": 77.6, "pendencias": 46, "mediaPorOrgao": 1.6, "codigosUnicos": 7},
-  pendencias: [{"CNPJ": "06.354.468/0001-60", "Nome": "ESTADO DO MARANHAO", "Tipo de Administração": "Direta", "Código": "3.2.3", "Descrição": "RREO — Anexo 8 ao Siope"}, {"CNPJ": "02.973.240/0001-06", "Nome": "ESTADO DO MARANHAO - SECRETARIA DE ESTADO DA SAUDE", "Tipo de Administração": "Direta", "Código": "1.5", "Descrição": "Regularidade perante o Poder Público Federal"}, {"CNPJ": "02.940.097/0001-48", "Nome": "ESTADO DO MARANHAO - SECRETARIA DE ESTADO DO DESENVOLVIMENTO SOCIAL", "Tipo de Administração": "Direta", "Código": "2.1.1", "Descrição": "Prestação de Contas de Recursos Federais - SIAFI/Subsistema Transferências"}, {"CNPJ": "04.902.288/0001-40", "Nome": "ESTADO DO MARANHAO - UNIDADE MISTA DE CARUTAPERA", "Tipo de Administração": "Direta", "Código": "1.5", "Descrição": "Regularidade perante o Poder Público Federal"}, {"CNPJ": "05.025.553/0001-12", "Nome": "SECRETARIA DE ESTADO DA AGRICULTURA E PECUARIA - SAGRIMA", "Tipo de Administração": "Direta", "Código": "1.5", "Descrição": "Regularidade perante o Poder Público Federal"}, {"CNPJ": "65.529.288/0001-31", "Nome": "SECRETARIA DE ESTADO DE IGUALDADE RACIAL SEIR", "Tipo de Administração": "Direta", "Código": "1.1", "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"}, {"CNPJ": "05.057.657/0001-09", "Nome": "AGENCIA ESTADUAL DE DEFESA AGROPECUARIA DO MARANHAO", "Tipo de Administração": "Indireta", "Código": "1.1", "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"}, {"CNPJ": "05.057.657/0001-09", "Nome": "AGENCIA ESTADUAL DE DEFESA AGROPECUARIA DO MARANHAO", "Tipo de Administração": "Indireta", "Código": "1.5", "Descrição": "Regularidade perante o Poder Público Federal"}, {"CNPJ": "08.578.592/0001-35", "Nome": "AGENCIA ESTADUAL DE MOBILIDADE URBANA E SERVICOS PUBLICOS - MOB", "Tipo de Administração": "Indireta", "Código": "1.1", "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"}, {"CNPJ": "08.593.102/0001-70", "Nome": "AGENCIA ESTADUAL DE PESQUISA AGROPECUARIA E EXTENSAO RURAL DO MARANHAO - AGERP / MA", "Tipo de Administração": "Indireta", "Código": "1.5", "Descrição": "Regularidade perante o Poder Público Federal"}, {"CNPJ": "60.794.030/0001-49", "Nome": "AGENCIA EXECUTIVA METROPOLITANA DO LESTE MARANHENSE - AGEMLESTE", "Tipo de Administração": "Indireta", "Código": "1.1", "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"}, {"CNPJ": "60.794.030/0001-49", "Nome": "AGENCIA EXECUTIVA METROPOLITANA DO LESTE MARANHENSE - AGEMLESTE", "Tipo de Administração": "Indireta", "Código": "1.5", "Descrição": "Regularidade perante o Poder Público Federal"}, {"CNPJ": "29.180.696/0001-67", "Nome": "AGENCIA EXECUTIVA METROPOLITANA DO SUDOESTE MARANHENSE - AGEMSUL", "Tipo de Administração": "Indireta", "Código": "1.1", "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"}, {"CNPJ": "29.180.696/0001-67", "Nome": "AGENCIA EXECUTIVA METROPOLITANA DO SUDOESTE MARANHENSE - AGEMSUL", "Tipo de Administração": "Indireta", "Código": "1.5", "Descrição": "Regularidade perante o Poder Público Federal"}, {"CNPJ": "05.694.533/0001-34", "Nome": "AGENCIA REGULADORA DE SERVICOS PUBLICOS DO MARANHAO", "Tipo de Administração": "Indireta", "Código": "1.1", "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"}, {"CNPJ": "06.274.757/0001-50", "Nome": "COMPANHIA DE SANEAMENTO AMBIENTAL DO MARANHAO-CAEMA", "Tipo de Administração": "Indireta", "Código": "1.1", "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"}, {"CNPJ": "06.274.757/0001-50", "Nome": "COMPANHIA DE SANEAMENTO AMBIENTAL DO MARANHAO-CAEMA", "Tipo de Administração": "Indireta", "Código": "1.5", "Descrição": "Regularidade perante o Poder Público Federal"}, {"CNPJ": "06.293.120/0001-00", "Nome": "DEPARTAMENTO ESTADUAL DE TRANSITO", "Tipo de Administração": "Indireta", "Código": "1.1", "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"}, {"CNPJ": "06.293.120/0001-00", "Nome": "DEPARTAMENTO ESTADUAL DE TRANSITO", "Tipo de Administração": "Indireta", "Código": "1.5", "Descrição": "Regularidade perante o Poder Público Federal"}, {"CNPJ": "18.519.709/0001-63", "Nome": "EMPRESA MARANHENSE DE SERVICOS HOSPITALARES - EMSERH", "Tipo de Administração": "Indireta", "Código": "1.1", "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"}, {"CNPJ": "18.519.709/0001-63", "Nome": "EMPRESA MARANHENSE DE SERVICOS HOSPITALARES - EMSERH", "Tipo de Administração": "Indireta", "Código": "1.3", "Descrição": "Regularidade quanto a Contribuições para o FGTS"}, {"CNPJ": "18.519.709/0001-63", "Nome": "EMPRESA MARANHENSE DE SERVICOS HOSPITALARES - EMSERH", "Tipo de Administração": "Indireta", "Código": "1.5", "Descrição": "Regularidade perante o Poder Público Federal"}, {"CNPJ": "69.382.307/0001-09", "Nome": "FUND CULT ASSIST E ECOLOGICA O HOMEM E A NATUREZA", "Tipo de Administração": "Indireta", "Código": "1.1", "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"}, {"CNPJ": "05.632.559/0001-58", "Nome": "FUNDACAO DA CRIANCA E DO ADOLESCENTE", "Tipo de Administração": "Indireta", "Código": "1.1", "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"}, {"CNPJ": "05.632.559/0001-58", "Nome": "FUNDACAO DA CRIANCA E DO ADOLESCENTE", "Tipo de Administração": "Indireta", "Código": "1.5", "Descrição": "Regularidade perante o Poder Público Federal"}, {"CNPJ": "59.825.955/0001-20", "Nome": "FUNDACAO ESCOLA DE GOVERNO DO MARANHAO - FUNDACAO EGMA", "Tipo de Administração": "Indireta", "Código": "1.1", "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"}, {"CNPJ": "97.357.420/0001-61", "Nome": "FUNDACAO NICE LOBAO", "Tipo de Administração": "Indireta", "Código": "1.1", "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"}, {"CNPJ": "97.357.420/0001-61", "Nome": "FUNDACAO NICE LOBAO", "Tipo de Administração": "Indireta", "Código": "1.5", "Descrição": "Regularidade perante o Poder Público Federal"}, {"CNPJ": "07.450.928/0001-17", "Nome": "FUNDO ESTADUAL DE PROTECAO E DEFESA DOS DIREITOS DO CONSUMIDOR - PROCON", "Tipo de Administração": "Indireta", "Código": "1.1", "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"}, {"CNPJ": "01.596.450/0001-51", "Nome": "INSTITUTO DE METROLOGIA E QUALIDADE INDUSTRIAL DO MARANHAO - INMEQ/MA", "Tipo de Administração": "Indireta", "Código": "1.5", "Descrição": "Regularidade perante o Poder Público Federal"}, {"CNPJ": "23.284.838/0001-50", "Nome": "INSTITUTO DE PROMOCAO E DEFESA DO CIDADAO E CONSUMIDOR DO ESTADO DO MARANHAO - PROCON/MA", "Tipo de Administração": "Indireta", "Código": "1.5", "Descrição": "Regularidade perante o Poder Público Federal"}, {"CNPJ": "05.849.024/0001-33", "Nome": "INSTITUTO ESTADUAL DE EDUCACAO, CIENCIA E TECNOLOGIA DO MARANHAO-IEMA", "Tipo de Administração": "Indireta", "Código": "1.1", "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"}, {"CNPJ": "05.849.024/0001-33", "Nome": "INSTITUTO ESTADUAL DE EDUCACAO, CIENCIA E TECNOLOGIA DO MARANHAO-IEMA", "Tipo de Administração": "Indireta", "Código": "1.5", "Descrição": "Regularidade perante o Poder Público Federal"}, {"CNPJ": "08.597.004/0001-00", "Nome": "INSTITUTO MARANHENSE DE ESTUDOS SOCIOECONOMICO E CARTOGRAFICO - IMESC", "Tipo de Administração": "Indireta", "Código": "1.1", "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"}, {"CNPJ": "05.289.160/0001-16", "Nome": "JUNTA COMERCIAL DO ESTADO DO MARANHAO", "Tipo de Administração": "Indireta", "Código": "1.1", "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"}, {"CNPJ": "05.289.160/0001-16", "Nome": "JUNTA COMERCIAL DO ESTADO DO MARANHAO", "Tipo de Administração": "Indireta", "Código": "1.5", "Descrição": "Regularidade perante o Poder Público Federal"}, {"CNPJ": "06.281.794/0001-95", "Nome": "MARANHAO PARCERIAS S.A", "Tipo de Administração": "Indireta", "Código": "1.5", "Descrição": "Regularidade perante o Poder Público Federal"}, {"CNPJ": "06.048.904/0001-73", "Nome": "MUNICIPIO DE SAO LUIS - ESCRITORIO TECNICO DE ADMINISTRACAO MUNICIPAL", "Tipo de Administração": "Indireta", "Código": "1.1", "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"}, {"CNPJ": "06.048.904/0001-73", "Nome": "MUNICIPIO DE SAO LUIS - ESCRITORIO TECNICO DE ADMINISTRACAO MUNICIPAL", "Tipo de Administração": "Indireta", "Código": "1.3", "Descrição": "Regularidade quanto a Contribuições para o FGTS"}, {"CNPJ": "06.048.904/0001-73", "Nome": "MUNICIPIO DE SAO LUIS - ESCRITORIO TECNICO DE ADMINISTRACAO MUNICIPAL", "Tipo de Administração": "Indireta", "Código": "1.5", "Descrição": "Regularidade perante o Poder Público Federal"}, {"CNPJ": "15.201.913/0001-43", "Nome": "ASSOCIACAO DOS CONSUMIDORES DE ENERGIA, AGUA,ESGOTO,TELEFONIA, PROPRIETARIOS DE VEICULOS AUTOMOTORES, USUARIOS DE SERVICOS PUBLICOS E PARTICULAR", "Tipo de Administração": "Indireta", "Código": "1.1", "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"}, {"CNPJ": "15.201.913/0001-43", "Nome": "ASSOCIACAO DOS CONSUMIDORES DE ENERGIA, AGUA,ESGOTO,TELEFONIA, PROPRIETARIOS DE VEICULOS AUTOMOTORES, USUARIOS DE SERVICOS PUBLICOS E PARTICULAR", "Tipo de Administração": "Indireta", "Código": "1.2", "Descrição": "Regularidade no pagamento de precatórios judiciais"}, {"CNPJ": "15.201.913/0001-43", "Nome": "ASSOCIACAO DOS CONSUMIDORES DE ENERGIA, AGUA,ESGOTO,TELEFONIA, PROPRIETARIOS DE VEICULOS AUTOMOTORES, USUARIOS DE SERVICOS PUBLICOS E PARTICULAR", "Tipo de Administração": "Indireta", "Código": "1.4", "Descrição": "Adimplência Financeira em Empréstimos e Financiamentos concedidos pela União"}, {"CNPJ": "15.201.913/0001-43", "Nome": "ASSOCIACAO DOS CONSUMIDORES DE ENERGIA, AGUA,ESGOTO,TELEFONIA, PROPRIETARIOS DE VEICULOS AUTOMOTORES, USUARIOS DE SERVICOS PUBLICOS E PARTICULAR", "Tipo de Administração": "Indireta", "Código": "1.5", "Descrição": "Regularidade perante o Poder Público Federal"}, {"CNPJ": "33.733.453/0001-86", "Nome": "CONSORCIO INTERESTADUAL DE DESENVOLVIMENTO SUSTENTAVEL DA AMAZONIA LEGAL", "Tipo de Administração": "Indireta", "Código": "1.2", "Descrição": "Regularidade no pagamento de precatórios judiciais"}, {"CNPJ": "33.733.453/0001-86", "Nome": "CONSORCIO INTERESTADUAL DE DESENVOLVIMENTO SUSTENTAVEL DA AMAZONIA LEGAL", "Tipo de Administração": "Indireta", "Código": "1.4", "Descrição": "Adimplência Financeira em Empréstimos e Financiamentos concedidos pela União"}],
-  codeCounts: {"3.2.3": 1, "1.5": 19, "2.1.1": 1, "1.1": 19, "1.3": 2, "1.2": 2, "1.4": 2},
-  ranking: [{"CNPJ": "15.201.913/0001-43", "Nome": "ASSOCIACAO DOS CONSUMIDORES DE ENERGIA, AGUA,ESGOTO,TELEFONIA, PROPRIETARIOS DE VEICULOS AUTOMOTORES, USUARIOS DE SERVICOS PUBLICOS E PARTICULAR", "Tipo": "Indireta", "codes": ["1.1", "1.2", "1.4", "1.5"]}, {"CNPJ": "18.519.709/0001-63", "Nome": "EMPRESA MARANHENSE DE SERVICOS HOSPITALARES - EMSERH", "Tipo": "Indireta", "codes": ["1.1", "1.3", "1.5"]}, {"CNPJ": "06.048.904/0001-73", "Nome": "MUNICIPIO DE SAO LUIS - ESCRITORIO TECNICO DE ADMINISTRACAO MUNICIPAL", "Tipo": "Indireta", "codes": ["1.1", "1.3", "1.5"]}, {"CNPJ": "05.057.657/0001-09", "Nome": "AGENCIA ESTADUAL DE DEFESA AGROPECUARIA DO MARANHAO", "Tipo": "Indireta", "codes": ["1.1", "1.5"]}, {"CNPJ": "60.794.030/0001-49", "Nome": "AGENCIA EXECUTIVA METROPOLITANA DO LESTE MARANHENSE - AGEMLESTE", "Tipo": "Indireta", "codes": ["1.1", "1.5"]}, {"CNPJ": "29.180.696/0001-67", "Nome": "AGENCIA EXECUTIVA METROPOLITANA DO SUDOESTE MARANHENSE - AGEMSUL", "Tipo": "Indireta", "codes": ["1.1", "1.5"]}, {"CNPJ": "06.274.757/0001-50", "Nome": "COMPANHIA DE SANEAMENTO AMBIENTAL DO MARANHAO-CAEMA", "Tipo": "Indireta", "codes": ["1.1", "1.5"]}, {"CNPJ": "06.293.120/0001-00", "Nome": "DEPARTAMENTO ESTADUAL DE TRANSITO", "Tipo": "Indireta", "codes": ["1.1", "1.5"]}, {"CNPJ": "05.632.559/0001-58", "Nome": "FUNDACAO DA CRIANCA E DO ADOLESCENTE", "Tipo": "Indireta", "codes": ["1.1", "1.5"]}, {"CNPJ": "97.357.420/0001-61", "Nome": "FUNDACAO NICE LOBAO", "Tipo": "Indireta", "codes": ["1.1", "1.5"]}, {"CNPJ": "05.849.024/0001-33", "Nome": "INSTITUTO ESTADUAL DE EDUCACAO, CIENCIA E TECNOLOGIA DO MARANHAO-IEMA", "Tipo": "Indireta", "codes": ["1.1", "1.5"]}, {"CNPJ": "05.289.160/0001-16", "Nome": "JUNTA COMERCIAL DO ESTADO DO MARANHAO", "Tipo": "Indireta", "codes": ["1.1", "1.5"]}, {"CNPJ": "33.733.453/0001-86", "Nome": "CONSORCIO INTERESTADUAL DE DESENVOLVIMENTO SUSTENTAVEL DA AMAZONIA LEGAL", "Tipo": "Indireta", "codes": ["1.2", "1.4"]}, {"CNPJ": "06.354.468/0001-60", "Nome": "ESTADO DO MARANHAO", "Tipo": "Direta", "codes": ["3.2.3"]}, {"CNPJ": "02.973.240/0001-06", "Nome": "ESTADO DO MARANHAO - SECRETARIA DE ESTADO DA SAUDE", "Tipo": "Direta", "codes": ["1.5"]}, {"CNPJ": "02.940.097/0001-48", "Nome": "ESTADO DO MARANHAO - SECRETARIA DE ESTADO DO DESENVOLVIMENTO SOCIAL", "Tipo": "Direta", "codes": ["2.1.1"]}, {"CNPJ": "04.902.288/0001-40", "Nome": "ESTADO DO MARANHAO - UNIDADE MISTA DE CARUTAPERA", "Tipo": "Direta", "codes": ["1.5"]}, {"CNPJ": "05.025.553/0001-12", "Nome": "SECRETARIA DE ESTADO DA AGRICULTURA E PECUARIA - SAGRIMA", "Tipo": "Direta", "codes": ["1.5"]}, {"CNPJ": "65.529.288/0001-31", "Nome": "SECRETARIA DE ESTADO DE IGUALDADE RACIAL SEIR", "Tipo": "Direta", "codes": ["1.1"]}, {"CNPJ": "08.578.592/0001-35", "Nome": "AGENCIA ESTADUAL DE MOBILIDADE URBANA E SERVICOS PUBLICOS - MOB", "Tipo": "Indireta", "codes": ["1.1"]}, {"CNPJ": "08.593.102/0001-70", "Nome": "AGENCIA ESTADUAL DE PESQUISA AGROPECUARIA E EXTENSAO RURAL DO MARANHAO - AGERP / MA", "Tipo": "Indireta", "codes": ["1.5"]}, {"CNPJ": "05.694.533/0001-34", "Nome": "AGENCIA REGULADORA DE SERVICOS PUBLICOS DO MARANHAO", "Tipo": "Indireta", "codes": ["1.1"]}, {"CNPJ": "69.382.307/0001-09", "Nome": "FUND CULT ASSIST E ECOLOGICA O HOMEM E A NATUREZA", "Tipo": "Indireta", "codes": ["1.1"]}, {"CNPJ": "59.825.955/0001-20", "Nome": "FUNDACAO ESCOLA DE GOVERNO DO MARANHAO - FUNDACAO EGMA", "Tipo": "Indireta", "codes": ["1.1"]}, {"CNPJ": "07.450.928/0001-17", "Nome": "FUNDO ESTADUAL DE PROTECAO E DEFESA DOS DIREITOS DO CONSUMIDOR - PROCON", "Tipo": "Indireta", "codes": ["1.1"]}, {"CNPJ": "01.596.450/0001-51", "Nome": "INSTITUTO DE METROLOGIA E QUALIDADE INDUSTRIAL DO MARANHAO - INMEQ/MA", "Tipo": "Indireta", "codes": ["1.5"]}, {"CNPJ": "23.284.838/0001-50", "Nome": "INSTITUTO DE PROMOCAO E DEFESA DO CIDADAO E CONSUMIDOR DO ESTADO DO MARANHAO - PROCON/MA", "Tipo": "Indireta", "codes": ["1.5"]}, {"CNPJ": "08.597.004/0001-00", "Nome": "INSTITUTO MARANHENSE DE ESTUDOS SOCIOECONOMICO E CARTOGRAFICO - IMESC", "Tipo": "Indireta", "codes": ["1.1"]}, {"CNPJ": "06.281.794/0001-95", "Nome": "MARANHAO PARCERIAS S.A", "Tipo": "Indireta", "codes": ["1.5"]}]
+  "dataPesquisa": "10/06/2026",
+  "totals": {
+    "total": 272,
+    "direta": 204,
+    "indireta": 36,
+    "aComprovar": 29,
+    "aComprovarPct": 10.7,
+    "comprovados": 211,
+    "comprovadosPct": 77.6,
+    "pendencias": 46,
+    "mediaPorOrgao": 1.6,
+    "codigosUnicos": 7
+  },
+  "pendencias": [
+    {
+      "CNPJ": "06.354.468/0001-60",
+      "Nome": "ESTADO DO MARANHAO",
+      "Tipo de Administração": "Direta",
+      "Código": "3.2.3",
+      "Descrição": "RREO — Anexo 8 ao Siope"
+    },
+    {
+      "CNPJ": "02.973.240/0001-06",
+      "Nome": "ESTADO DO MARANHAO - SECRETARIA DE ESTADO DA SAUDE",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "02.940.097/0001-48",
+      "Nome": "ESTADO DO MARANHAO - SECRETARIA DE ESTADO DO DESENVOLVIMENTO SOCIAL",
+      "Tipo de Administração": "Direta",
+      "Código": "2.1.1",
+      "Descrição": "Prestação de Contas de Recursos Federais - SIAFI/Subsistema Transferências"
+    },
+    {
+      "CNPJ": "04.902.288/0001-40",
+      "Nome": "ESTADO DO MARANHAO - UNIDADE MISTA DE CARUTAPERA",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "05.025.553/0001-12",
+      "Nome": "SECRETARIA DE ESTADO DA AGRICULTURA E PECUARIA - SAGRIMA",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "65.529.288/0001-31",
+      "Nome": "SECRETARIA DE ESTADO DE IGUALDADE RACIAL SEIR",
+      "Tipo de Administração": "Direta",
+      "Código": "1.1",
+      "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"
+    },
+    {
+      "CNPJ": "05.057.657/0001-09",
+      "Nome": "AGENCIA ESTADUAL DE DEFESA AGROPECUARIA DO MARANHAO",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.1",
+      "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"
+    },
+    {
+      "CNPJ": "05.057.657/0001-09",
+      "Nome": "AGENCIA ESTADUAL DE DEFESA AGROPECUARIA DO MARANHAO",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "08.578.592/0001-35",
+      "Nome": "AGENCIA ESTADUAL DE MOBILIDADE URBANA E SERVICOS PUBLICOS - MOB",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.1",
+      "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"
+    },
+    {
+      "CNPJ": "08.593.102/0001-70",
+      "Nome": "AGENCIA ESTADUAL DE PESQUISA AGROPECUARIA E EXTENSAO RURAL DO MARANHAO - AGERP / MA",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "60.794.030/0001-49",
+      "Nome": "AGENCIA EXECUTIVA METROPOLITANA DO LESTE MARANHENSE - AGEMLESTE",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.1",
+      "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"
+    },
+    {
+      "CNPJ": "60.794.030/0001-49",
+      "Nome": "AGENCIA EXECUTIVA METROPOLITANA DO LESTE MARANHENSE - AGEMLESTE",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "29.180.696/0001-67",
+      "Nome": "AGENCIA EXECUTIVA METROPOLITANA DO SUDOESTE MARANHENSE - AGEMSUL",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.1",
+      "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"
+    },
+    {
+      "CNPJ": "29.180.696/0001-67",
+      "Nome": "AGENCIA EXECUTIVA METROPOLITANA DO SUDOESTE MARANHENSE - AGEMSUL",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "05.694.533/0001-34",
+      "Nome": "AGENCIA REGULADORA DE SERVICOS PUBLICOS DO MARANHAO",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.1",
+      "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"
+    },
+    {
+      "CNPJ": "06.274.757/0001-50",
+      "Nome": "COMPANHIA DE SANEAMENTO AMBIENTAL DO MARANHAO-CAEMA",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.1",
+      "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"
+    },
+    {
+      "CNPJ": "06.274.757/0001-50",
+      "Nome": "COMPANHIA DE SANEAMENTO AMBIENTAL DO MARANHAO-CAEMA",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "06.293.120/0001-00",
+      "Nome": "DEPARTAMENTO ESTADUAL DE TRANSITO",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.1",
+      "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"
+    },
+    {
+      "CNPJ": "06.293.120/0001-00",
+      "Nome": "DEPARTAMENTO ESTADUAL DE TRANSITO",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "18.519.709/0001-63",
+      "Nome": "EMPRESA MARANHENSE DE SERVICOS HOSPITALARES - EMSERH",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.1",
+      "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"
+    },
+    {
+      "CNPJ": "18.519.709/0001-63",
+      "Nome": "EMPRESA MARANHENSE DE SERVICOS HOSPITALARES - EMSERH",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.3",
+      "Descrição": "Regularidade quanto a Contribuições para o FGTS"
+    },
+    {
+      "CNPJ": "18.519.709/0001-63",
+      "Nome": "EMPRESA MARANHENSE DE SERVICOS HOSPITALARES - EMSERH",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "69.382.307/0001-09",
+      "Nome": "FUND CULT ASSIST E ECOLOGICA O HOMEM E A NATUREZA",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.1",
+      "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"
+    },
+    {
+      "CNPJ": "05.632.559/0001-58",
+      "Nome": "FUNDACAO DA CRIANCA E DO ADOLESCENTE",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.1",
+      "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"
+    },
+    {
+      "CNPJ": "05.632.559/0001-58",
+      "Nome": "FUNDACAO DA CRIANCA E DO ADOLESCENTE",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "59.825.955/0001-20",
+      "Nome": "FUNDACAO ESCOLA DE GOVERNO DO MARANHAO - FUNDACAO EGMA",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.1",
+      "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"
+    },
+    {
+      "CNPJ": "97.357.420/0001-61",
+      "Nome": "FUNDACAO NICE LOBAO",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.1",
+      "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"
+    },
+    {
+      "CNPJ": "97.357.420/0001-61",
+      "Nome": "FUNDACAO NICE LOBAO",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "07.450.928/0001-17",
+      "Nome": "FUNDO ESTADUAL DE PROTECAO E DEFESA DOS DIREITOS DO CONSUMIDOR - PROCON",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.1",
+      "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"
+    },
+    {
+      "CNPJ": "01.596.450/0001-51",
+      "Nome": "INSTITUTO DE METROLOGIA E QUALIDADE INDUSTRIAL DO MARANHAO - INMEQ/MA",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "23.284.838/0001-50",
+      "Nome": "INSTITUTO DE PROMOCAO E DEFESA DO CIDADAO E CONSUMIDOR DO ESTADO DO MARANHAO - PROCON/MA",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "05.849.024/0001-33",
+      "Nome": "INSTITUTO ESTADUAL DE EDUCACAO, CIENCIA E TECNOLOGIA DO MARANHAO-IEMA",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.1",
+      "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"
+    },
+    {
+      "CNPJ": "05.849.024/0001-33",
+      "Nome": "INSTITUTO ESTADUAL DE EDUCACAO, CIENCIA E TECNOLOGIA DO MARANHAO-IEMA",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "08.597.004/0001-00",
+      "Nome": "INSTITUTO MARANHENSE DE ESTUDOS SOCIOECONOMICO E CARTOGRAFICO - IMESC",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.1",
+      "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"
+    },
+    {
+      "CNPJ": "05.289.160/0001-16",
+      "Nome": "JUNTA COMERCIAL DO ESTADO DO MARANHAO",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.1",
+      "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"
+    },
+    {
+      "CNPJ": "05.289.160/0001-16",
+      "Nome": "JUNTA COMERCIAL DO ESTADO DO MARANHAO",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "06.281.794/0001-95",
+      "Nome": "MARANHAO PARCERIAS S.A",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "06.048.904/0001-73",
+      "Nome": "MUNICIPIO DE SAO LUIS - ESCRITORIO TECNICO DE ADMINISTRACAO MUNICIPAL",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.1",
+      "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"
+    },
+    {
+      "CNPJ": "06.048.904/0001-73",
+      "Nome": "MUNICIPIO DE SAO LUIS - ESCRITORIO TECNICO DE ADMINISTRACAO MUNICIPAL",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.3",
+      "Descrição": "Regularidade quanto a Contribuições para o FGTS"
+    },
+    {
+      "CNPJ": "06.048.904/0001-73",
+      "Nome": "MUNICIPIO DE SAO LUIS - ESCRITORIO TECNICO DE ADMINISTRACAO MUNICIPAL",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "15.201.913/0001-43",
+      "Nome": "ASSOCIACAO DOS CONSUMIDORES DE ENERGIA, AGUA,ESGOTO,TELEFONIA, PROPRIETARIOS DE VEICULOS AUTOMOTORES, USUARIOS DE SERVICOS PUBLICOS E PARTICULAR",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.1",
+      "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"
+    },
+    {
+      "CNPJ": "15.201.913/0001-43",
+      "Nome": "ASSOCIACAO DOS CONSUMIDORES DE ENERGIA, AGUA,ESGOTO,TELEFONIA, PROPRIETARIOS DE VEICULOS AUTOMOTORES, USUARIOS DE SERVICOS PUBLICOS E PARTICULAR",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.2",
+      "Descrição": "Regularidade no pagamento de precatórios judiciais"
+    },
+    {
+      "CNPJ": "15.201.913/0001-43",
+      "Nome": "ASSOCIACAO DOS CONSUMIDORES DE ENERGIA, AGUA,ESGOTO,TELEFONIA, PROPRIETARIOS DE VEICULOS AUTOMOTORES, USUARIOS DE SERVICOS PUBLICOS E PARTICULAR",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.4",
+      "Descrição": "Adimplência Financeira em Empréstimos e Financiamentos concedidos pela União"
+    },
+    {
+      "CNPJ": "15.201.913/0001-43",
+      "Nome": "ASSOCIACAO DOS CONSUMIDORES DE ENERGIA, AGUA,ESGOTO,TELEFONIA, PROPRIETARIOS DE VEICULOS AUTOMOTORES, USUARIOS DE SERVICOS PUBLICOS E PARTICULAR",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "33.733.453/0001-86",
+      "Nome": "CONSORCIO INTERESTADUAL DE DESENVOLVIMENTO SUSTENTAVEL DA AMAZONIA LEGAL",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.2",
+      "Descrição": "Regularidade no pagamento de precatórios judiciais"
+    },
+    {
+      "CNPJ": "33.733.453/0001-86",
+      "Nome": "CONSORCIO INTERESTADUAL DE DESENVOLVIMENTO SUSTENTAVEL DA AMAZONIA LEGAL",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.4",
+      "Descrição": "Adimplência Financeira em Empréstimos e Financiamentos concedidos pela União"
+    }
+  ],
+  "codeCounts": {
+    "3.2.3": 1,
+    "1.5": 19,
+    "2.1.1": 1,
+    "1.1": 19,
+    "1.3": 2,
+    "1.2": 2,
+    "1.4": 2
+  },
+  "ranking": [
+    {
+      "CNPJ": "15.201.913/0001-43",
+      "Nome": "ASSOCIACAO DOS CONSUMIDORES DE ENERGIA, AGUA,ESGOTO,TELEFONIA, PROPRIETARIOS DE VEICULOS AUTOMOTORES, USUARIOS DE SERVICOS PUBLICOS E PARTICULAR",
+      "Tipo": "Indireta",
+      "codes": [
+        "1.1",
+        "1.2",
+        "1.4",
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "18.519.709/0001-63",
+      "Nome": "EMPRESA MARANHENSE DE SERVICOS HOSPITALARES - EMSERH",
+      "Tipo": "Indireta",
+      "codes": [
+        "1.1",
+        "1.3",
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "06.048.904/0001-73",
+      "Nome": "MUNICIPIO DE SAO LUIS - ESCRITORIO TECNICO DE ADMINISTRACAO MUNICIPAL",
+      "Tipo": "Indireta",
+      "codes": [
+        "1.1",
+        "1.3",
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "05.057.657/0001-09",
+      "Nome": "AGENCIA ESTADUAL DE DEFESA AGROPECUARIA DO MARANHAO",
+      "Tipo": "Indireta",
+      "codes": [
+        "1.1",
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "60.794.030/0001-49",
+      "Nome": "AGENCIA EXECUTIVA METROPOLITANA DO LESTE MARANHENSE - AGEMLESTE",
+      "Tipo": "Indireta",
+      "codes": [
+        "1.1",
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "29.180.696/0001-67",
+      "Nome": "AGENCIA EXECUTIVA METROPOLITANA DO SUDOESTE MARANHENSE - AGEMSUL",
+      "Tipo": "Indireta",
+      "codes": [
+        "1.1",
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "06.274.757/0001-50",
+      "Nome": "COMPANHIA DE SANEAMENTO AMBIENTAL DO MARANHAO-CAEMA",
+      "Tipo": "Indireta",
+      "codes": [
+        "1.1",
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "06.293.120/0001-00",
+      "Nome": "DEPARTAMENTO ESTADUAL DE TRANSITO",
+      "Tipo": "Indireta",
+      "codes": [
+        "1.1",
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "05.632.559/0001-58",
+      "Nome": "FUNDACAO DA CRIANCA E DO ADOLESCENTE",
+      "Tipo": "Indireta",
+      "codes": [
+        "1.1",
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "97.357.420/0001-61",
+      "Nome": "FUNDACAO NICE LOBAO",
+      "Tipo": "Indireta",
+      "codes": [
+        "1.1",
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "05.849.024/0001-33",
+      "Nome": "INSTITUTO ESTADUAL DE EDUCACAO, CIENCIA E TECNOLOGIA DO MARANHAO-IEMA",
+      "Tipo": "Indireta",
+      "codes": [
+        "1.1",
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "05.289.160/0001-16",
+      "Nome": "JUNTA COMERCIAL DO ESTADO DO MARANHAO",
+      "Tipo": "Indireta",
+      "codes": [
+        "1.1",
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "33.733.453/0001-86",
+      "Nome": "CONSORCIO INTERESTADUAL DE DESENVOLVIMENTO SUSTENTAVEL DA AMAZONIA LEGAL",
+      "Tipo": "Indireta",
+      "codes": [
+        "1.2",
+        "1.4"
+      ]
+    },
+    {
+      "CNPJ": "06.354.468/0001-60",
+      "Nome": "ESTADO DO MARANHAO",
+      "Tipo": "Direta",
+      "codes": [
+        "3.2.3"
+      ]
+    },
+    {
+      "CNPJ": "02.973.240/0001-06",
+      "Nome": "ESTADO DO MARANHAO - SECRETARIA DE ESTADO DA SAUDE",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "02.940.097/0001-48",
+      "Nome": "ESTADO DO MARANHAO - SECRETARIA DE ESTADO DO DESENVOLVIMENTO SOCIAL",
+      "Tipo": "Direta",
+      "codes": [
+        "2.1.1"
+      ]
+    },
+    {
+      "CNPJ": "04.902.288/0001-40",
+      "Nome": "ESTADO DO MARANHAO - UNIDADE MISTA DE CARUTAPERA",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "05.025.553/0001-12",
+      "Nome": "SECRETARIA DE ESTADO DA AGRICULTURA E PECUARIA - SAGRIMA",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "65.529.288/0001-31",
+      "Nome": "SECRETARIA DE ESTADO DE IGUALDADE RACIAL SEIR",
+      "Tipo": "Direta",
+      "codes": [
+        "1.1"
+      ]
+    },
+    {
+      "CNPJ": "08.578.592/0001-35",
+      "Nome": "AGENCIA ESTADUAL DE MOBILIDADE URBANA E SERVICOS PUBLICOS - MOB",
+      "Tipo": "Indireta",
+      "codes": [
+        "1.1"
+      ]
+    },
+    {
+      "CNPJ": "08.593.102/0001-70",
+      "Nome": "AGENCIA ESTADUAL DE PESQUISA AGROPECUARIA E EXTENSAO RURAL DO MARANHAO - AGERP / MA",
+      "Tipo": "Indireta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "05.694.533/0001-34",
+      "Nome": "AGENCIA REGULADORA DE SERVICOS PUBLICOS DO MARANHAO",
+      "Tipo": "Indireta",
+      "codes": [
+        "1.1"
+      ]
+    },
+    {
+      "CNPJ": "69.382.307/0001-09",
+      "Nome": "FUND CULT ASSIST E ECOLOGICA O HOMEM E A NATUREZA",
+      "Tipo": "Indireta",
+      "codes": [
+        "1.1"
+      ]
+    },
+    {
+      "CNPJ": "59.825.955/0001-20",
+      "Nome": "FUNDACAO ESCOLA DE GOVERNO DO MARANHAO - FUNDACAO EGMA",
+      "Tipo": "Indireta",
+      "codes": [
+        "1.1"
+      ]
+    },
+    {
+      "CNPJ": "07.450.928/0001-17",
+      "Nome": "FUNDO ESTADUAL DE PROTECAO E DEFESA DOS DIREITOS DO CONSUMIDOR - PROCON",
+      "Tipo": "Indireta",
+      "codes": [
+        "1.1"
+      ]
+    },
+    {
+      "CNPJ": "01.596.450/0001-51",
+      "Nome": "INSTITUTO DE METROLOGIA E QUALIDADE INDUSTRIAL DO MARANHAO - INMEQ/MA",
+      "Tipo": "Indireta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "23.284.838/0001-50",
+      "Nome": "INSTITUTO DE PROMOCAO E DEFESA DO CIDADAO E CONSUMIDOR DO ESTADO DO MARANHAO - PROCON/MA",
+      "Tipo": "Indireta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "08.597.004/0001-00",
+      "Nome": "INSTITUTO MARANHENSE DE ESTUDOS SOCIOECONOMICO E CARTOGRAFICO - IMESC",
+      "Tipo": "Indireta",
+      "codes": [
+        "1.1"
+      ]
+    },
+    {
+      "CNPJ": "06.281.794/0001-95",
+      "Nome": "MARANHAO PARCERIAS S.A",
+      "Tipo": "Indireta",
+      "codes": [
+        "1.5"
+      ]
+    }
+  ]
 };
 
 const CODIGO_DESCRICAO = {
@@ -1122,5 +2016,6 @@ $('#modalOpenRepo').addEventListener('click', () => {
 renderAll();
 </script>
 
-</body>
-</html>
+
+
+<div class="toast info show">Gerando HTML atualizado...</div></body></html>
