@@ -449,28 +449,54 @@ body{
   background-size:cover;
   pointer-events:none;
 }
+/* Bandeira oficial do Maranhão:
+   9 faixas horizontais (verm/branca/preta/branca/verm/branca/preta/branca/verm)
+   + cantão azul no canto superior esquerdo (ocupa 4 primeiras faixas)
+   + estrela branca de 5 pontas no centro do cantão */
 .estado-flag{
-  width:72px;height:72px;
-  background:linear-gradient(180deg,
-    #b91c1c 0% 28%,
-    #fff 28% 50%,
-    #0f172a 50% 72%,
-    #fff 72% 100%);
-  border-radius:12px;
+  width:108px;height:72px;  /* proporção 3:2 da bandeira oficial */
+  border-radius:6px;
   border:2px solid rgba(255,255,255,.4);
   flex-shrink:0;
   position:relative;
-  box-shadow:0 4px 12px rgba(0,0,0,.2);
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  box-shadow:0 4px 12px rgba(0,0,0,.25);
+  overflow:hidden;
+  /* 9 faixas horizontais com gradiente */
+  background:linear-gradient(180deg,
+    #c8102e 0%, #c8102e 11.111%,           /* faixa 1: vermelha */
+    #ffffff 11.111%, #ffffff 22.222%,       /* faixa 2: branca */
+    #0a0a0a 22.222%, #0a0a0a 33.333%,       /* faixa 3: preta */
+    #ffffff 33.333%, #ffffff 44.444%,       /* faixa 4: branca */
+    #c8102e 44.444%, #c8102e 55.556%,       /* faixa 5: vermelha */
+    #ffffff 55.556%, #ffffff 66.667%,       /* faixa 6: branca */
+    #0a0a0a 66.667%, #0a0a0a 77.778%,       /* faixa 7: preta */
+    #ffffff 77.778%, #ffffff 88.889%,       /* faixa 8: branca */
+    #c8102e 88.889%, #c8102e 100%           /* faixa 9: vermelha */
+  );
 }
-.estado-flag::after{
-  content:'★';
+/* Cantão azul: ocupa as 4 primeiras faixas (44.444% da altura) */
+.estado-flag::before{
+  content:'';
   position:absolute;
-  font-size:18px;
-  color:#fbbf24;
-  text-shadow:0 1px 3px rgba(0,0,0,.4);
+  top:0;left:0;
+  width:50%;
+  height:44.444%;
+  background:#003da5;
+  z-index:1;
+}
+/* Estrela branca de 5 pontas centralizada no cantão */
+.estado-flag::after{
+  content:'';
+  position:absolute;
+  top:22.222%;        /* metade da altura do cantão (44.444% / 2) */
+  left:25%;           /* metade da largura do cantão (50% / 2) */
+  transform:translate(-50%, -50%);
+  width:18px;height:18px;
+  background:#ffffff;
+  /* clip-path para estrela de 5 pontas perfeita */
+  clip-path:polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  z-index:2;
+  filter:drop-shadow(0 1px 1px rgba(0,0,0,.3));
 }
 .estado-info{flex:1;min-width:220px;position:relative;z-index:1}
 .estado-eyebrow{
@@ -619,7 +645,8 @@ body{
 
 @media (max-width:680px){
   .estado-banner-header{padding:20px;gap:14px}
-  .estado-flag{width:60px;height:60px}
+  .estado-flag{width:90px;height:60px}
+  .estado-flag::after{width:14px;height:14px}
   .estado-nome{font-size:20px}
   .estado-pendencias-count{padding:10px 14px;min-width:90px}
   .estado-pendencias-numero{font-size:28px}
