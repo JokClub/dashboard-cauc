@@ -29077,7 +29077,7 @@ to {
       </div>
     </div>
     <div class="header-right">
-      <span class="badge" id="dataLabel">📅 31/07/2026</span>
+      <span class="badge" id="dataLabel">📅 03/08/2026</span>
       <span class="badge live">Dados carregados</span>
     </div>
   </div>
@@ -29093,7 +29093,7 @@ to {
         <div class="upload-zone-hint">Arraste o CSV do dia aqui para substituir os dados visualizados</div>
       </div>
     </div>
-    <div class="file-info" id="fileInfo">Snapshot: 31/07/2026 · 272 órgãos</div>
+    <div class="file-info" id="fileInfo">Snapshot: 03/08/2026 · 272 órgãos</div>
     <div class="actions-bar">
       <button class="btn btn-publish" id="btnPublish" title="Gerar HTML pronto para publicar no GitHub">🚀 Publicar atualização</button>
       <button class="btn btn-secondary" id="btnXlsx">⬇️ Excel</button>
@@ -29105,12 +29105,12 @@ to {
 <main class="container">
 
   <!-- Banner destacado: Estado do Maranhão (ente principal) -->
-  <div class="estado-banner no-pendencias" id="estadoBanner">
+  <div class="estado-banner" id="estadoBanner">
     <div class="estado-banner-header">
       <div class="estado-flag" aria-label="Bandeira do Maranhão"></div>
       <div class="estado-info">
         <div class="estado-eyebrow">Ente Federativo Principal</div>
-        <div class="estado-nome" id="estadoNome">Estado do Maranhão</div>
+        <div class="estado-nome" id="estadoNome">ESTADO DO MARANHAO</div>
         <div class="estado-meta">
           <div class="estado-meta-item">
             <span>CNPJ:</span>
@@ -29123,10 +29123,10 @@ to {
       </div>
       <div class="estado-status">
         <div class="estado-pendencias-count">
-          <div class="estado-pendencias-numero" id="estadoPendNum">0</div>
+          <div class="estado-pendencias-numero" id="estadoPendNum">1</div>
           <div class="estado-pendencias-label">Pendências</div>
         </div>
-        <span class="estado-status-badge success" id="estadoStatusBadge">✅ Regular</span>
+        <span class="estado-status-badge warn" id="estadoStatusBadge">⚠️ A Comprovar</span>
       </div>
     </div>
     <div class="estado-banner-body" id="estadoBannerBody" style="display: block;">
@@ -29141,7 +29141,7 @@ to {
 
   <div class="update-banner" id="updateBanner">
     <span>🔄</span>
-    <span id="updateBannerText">Dashboard atualizado com "Situação dos Órgãos e Entidades do Ente Federativo - Maranhão - 31-07-2026.csv" (31/07/2026)</span>
+    <span id="updateBannerText">Dashboard atualizado com "Situação dos Órgãos e Entidades do Ente Federativo - Maranhão - 03-08-2026.csv" (03/08/2026)</span>
     <button class="update-banner-close" id="updateBannerClose">✕</button>
   </div>
 
@@ -29174,7 +29174,7 @@ to {
         <span class="kpi-label">Pendências (itens)</span>
         <span class="kpi-icon">🚨</span>
       </div>
-      <div class="kpi-value" id="kpiPendencias">26</div>
+      <div class="kpi-value" id="kpiPendencias">27</div>
       <div class="kpi-meta">
         <span id="kpiMediaPorOrgao">1.2</span> por órgão (média)
       </div>
@@ -29196,7 +29196,7 @@ to {
         <span class="kpi-label">Códigos pendentes</span>
         <span class="kpi-icon">🔢</span>
       </div>
-      <div class="kpi-value" id="kpiCodigos">4</div>
+      <div class="kpi-value" id="kpiCodigos">6</div>
       <div class="kpi-meta">
         de 30 itens CAUC monitorados
       </div>
@@ -29575,7 +29575,7 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
 <script>
 /* === DADOS INICIAIS EMBUTIDOS DO RELATÓRIO === */
 const INITIAL_DATA = {
-  "dataPesquisa": "31/07/2026",
+  "dataPesquisa": "03/08/2026",
   "totals": {
     "total": 272,
     "direta": 204,
@@ -29584,11 +29584,18 @@ const INITIAL_DATA = {
     "aComprovarPct": 8.1,
     "comprovados": 218,
     "comprovadosPct": 80.1,
-    "pendencias": 26,
+    "pendencias": 27,
     "mediaPorOrgao": 1.2,
-    "codigosUnicos": 4
+    "codigosUnicos": 6
   },
   "pendencias": [
+    {
+      "CNPJ": "06.354.468/0001-60",
+      "Nome": "ESTADO DO MARANHAO",
+      "Tipo de Administração": "Direta",
+      "Código": "3.2.3",
+      "Descrição": "RREO — Anexo 8 ao Siope"
+    },
     {
       "CNPJ": "13.127.340/0001-20",
       "Nome": "SECRETARIA DE ESTADO DE ADMINISTRACAO PENITENCIARIA - SEAP",
@@ -29607,22 +29614,8 @@ const INITIAL_DATA = {
       "CNPJ": "02.940.097/0001-48",
       "Nome": "ESTADO DO MARANHAO - SECRETARIA DE ESTADO DO DESENVOLVIMENTO SOCIAL",
       "Tipo de Administração": "Direta",
-      "Código": "1.5",
-      "Descrição": "Regularidade perante o Poder Público Federal"
-    },
-    {
-      "CNPJ": "02.940.097/0001-48",
-      "Nome": "ESTADO DO MARANHAO - SECRETARIA DE ESTADO DO DESENVOLVIMENTO SOCIAL",
-      "Tipo de Administração": "Direta",
       "Código": "2.1.1",
       "Descrição": "Prestação de Contas de Recursos Federais - SIAFI/Subsistema Transferências"
-    },
-    {
-      "CNPJ": "05.022.633/0001-14",
-      "Nome": "ESTADO DO MARANHAO - SECRETARIA DE ESTADO DO PLANEJAMENTO E ORCAMENTO",
-      "Tipo de Administração": "Direta",
-      "Código": "1.5",
-      "Descrição": "Regularidade perante o Poder Público Federal"
     },
     {
       "CNPJ": "04.902.288/0001-40",
@@ -29677,6 +29670,13 @@ const INITIAL_DATA = {
       "CNPJ": "18.519.709/0001-63",
       "Nome": "EMPRESA MARANHENSE DE SERVICOS HOSPITALARES - EMSERH",
       "Tipo de Administração": "Indireta",
+      "Código": "1.3",
+      "Descrição": "Regularidade quanto a Contribuições para o FGTS"
+    },
+    {
+      "CNPJ": "18.519.709/0001-63",
+      "Nome": "EMPRESA MARANHENSE DE SERVICOS HOSPITALARES - EMSERH",
+      "Tipo de Administração": "Indireta",
       "Código": "1.5",
       "Descrição": "Regularidade perante o Poder Público Federal"
     },
@@ -29721,6 +29721,13 @@ const INITIAL_DATA = {
       "Tipo de Administração": "Indireta",
       "Código": "1.5",
       "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "06.048.904/0001-73",
+      "Nome": "MUNICIPIO DE SAO LUIS - ESCRITORIO TECNICO DE ADMINISTRACAO MUNICIPAL",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.3",
+      "Descrição": "Regularidade quanto a Contribuições para o FGTS"
     },
     {
       "CNPJ": "06.048.904/0001-73",
@@ -29773,8 +29780,10 @@ const INITIAL_DATA = {
     }
   ],
   "codeCounts": {
-    "1.5": 21,
+    "3.2.3": 1,
+    "1.5": 19,
     "2.1.1": 1,
+    "1.3": 2,
     "1.2": 2,
     "1.4": 2
   },
@@ -29790,12 +29799,21 @@ const INITIAL_DATA = {
       ]
     },
     {
-      "CNPJ": "02.940.097/0001-48",
-      "Nome": "ESTADO DO MARANHAO - SECRETARIA DE ESTADO DO DESENVOLVIMENTO SOCIAL",
-      "Tipo": "Direta",
+      "CNPJ": "18.519.709/0001-63",
+      "Nome": "EMPRESA MARANHENSE DE SERVICOS HOSPITALARES - EMSERH",
+      "Tipo": "Indireta",
       "codes": [
-        "1.5",
-        "2.1.1"
+        "1.3",
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "06.048.904/0001-73",
+      "Nome": "MUNICIPIO DE SAO LUIS - ESCRITORIO TECNICO DE ADMINISTRACAO MUNICIPAL",
+      "Tipo": "Indireta",
+      "codes": [
+        "1.3",
+        "1.5"
       ]
     },
     {
@@ -29805,6 +29823,14 @@ const INITIAL_DATA = {
       "codes": [
         "1.2",
         "1.4"
+      ]
+    },
+    {
+      "CNPJ": "06.354.468/0001-60",
+      "Nome": "ESTADO DO MARANHAO",
+      "Tipo": "Direta",
+      "codes": [
+        "3.2.3"
       ]
     },
     {
@@ -29824,11 +29850,11 @@ const INITIAL_DATA = {
       ]
     },
     {
-      "CNPJ": "05.022.633/0001-14",
-      "Nome": "ESTADO DO MARANHAO - SECRETARIA DE ESTADO DO PLANEJAMENTO E ORCAMENTO",
+      "CNPJ": "02.940.097/0001-48",
+      "Nome": "ESTADO DO MARANHAO - SECRETARIA DE ESTADO DO DESENVOLVIMENTO SOCIAL",
       "Tipo": "Direta",
       "codes": [
-        "1.5"
+        "2.1.1"
       ]
     },
     {
@@ -29888,14 +29914,6 @@ const INITIAL_DATA = {
       ]
     },
     {
-      "CNPJ": "18.519.709/0001-63",
-      "Nome": "EMPRESA MARANHENSE DE SERVICOS HOSPITALARES - EMSERH",
-      "Tipo": "Indireta",
-      "codes": [
-        "1.5"
-      ]
-    },
-    {
       "CNPJ": "05.632.559/0001-58",
       "Nome": "FUNDACAO DE ATENDIMENTO SOCIEDUCATIVO DO MARANHAO - FASE/MA",
       "Tipo": "Indireta",
@@ -29938,14 +29956,6 @@ const INITIAL_DATA = {
     {
       "CNPJ": "06.281.794/0001-95",
       "Nome": "MARANHAO PARCERIAS S.A",
-      "Tipo": "Indireta",
-      "codes": [
-        "1.5"
-      ]
-    },
-    {
-      "CNPJ": "06.048.904/0001-73",
-      "Nome": "MUNICIPIO DE SAO LUIS - ESCRITORIO TECNICO DE ADMINISTRACAO MUNICIPAL",
       "Tipo": "Indireta",
       "codes": [
         "1.5"
