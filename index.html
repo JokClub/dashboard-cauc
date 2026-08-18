@@ -29077,7 +29077,7 @@ to {
       </div>
     </div>
     <div class="header-right">
-      <span class="badge" id="dataLabel">📅 05/08/2026</span>
+      <span class="badge" id="dataLabel">📅 18/08/2026</span>
       <span class="badge live">Dados carregados</span>
     </div>
   </div>
@@ -29093,7 +29093,7 @@ to {
         <div class="upload-zone-hint">Arraste o CSV do dia aqui para substituir os dados visualizados</div>
       </div>
     </div>
-    <div class="file-info" id="fileInfo">Snapshot: 05/08/2026 · 272 órgãos</div>
+    <div class="file-info" id="fileInfo">Snapshot: 18/08/2026 · 272 órgãos</div>
     <div class="actions-bar">
       <button class="btn btn-publish" id="btnPublish" title="Gerar HTML pronto para publicar no GitHub">🚀 Publicar atualização</button>
       <button class="btn btn-secondary" id="btnXlsx">⬇️ Excel</button>
@@ -29105,12 +29105,12 @@ to {
 <main class="container">
 
   <!-- Banner destacado: Estado do Maranhão (ente principal) -->
-  <div class="estado-banner no-pendencias" id="estadoBanner">
+  <div class="estado-banner" id="estadoBanner">
     <div class="estado-banner-header">
       <div class="estado-flag" aria-label="Bandeira do Maranhão"></div>
       <div class="estado-info">
         <div class="estado-eyebrow">Ente Federativo Principal</div>
-        <div class="estado-nome" id="estadoNome">Estado do Maranhão</div>
+        <div class="estado-nome" id="estadoNome">ESTADO DO MARANHAO</div>
         <div class="estado-meta">
           <div class="estado-meta-item">
             <span>CNPJ:</span>
@@ -29123,10 +29123,10 @@ to {
       </div>
       <div class="estado-status">
         <div class="estado-pendencias-count">
-          <div class="estado-pendencias-numero" id="estadoPendNum">0</div>
+          <div class="estado-pendencias-numero" id="estadoPendNum">1</div>
           <div class="estado-pendencias-label">Pendências</div>
         </div>
-        <span class="estado-status-badge success" id="estadoStatusBadge">✅ Regular</span>
+        <span class="estado-status-badge warn" id="estadoStatusBadge">⚠️ A Comprovar</span>
       </div>
     </div>
     <div class="estado-banner-body" id="estadoBannerBody" style="display: block;">
@@ -29141,7 +29141,7 @@ to {
 
   <div class="update-banner" id="updateBanner">
     <span>🔄</span>
-    <span id="updateBannerText">Dashboard atualizado com "Situação dos Órgãos e Entidades do Ente Federativo - Maranhão - 05-08-2026.csv" (05/08/2026)</span>
+    <span id="updateBannerText">Dashboard atualizado com "Situação dos Órgãos e Entidades do Ente Federativo - Maranhão - 18-08-2026.csv" (18/08/2026)</span>
     <button class="update-banner-close" id="updateBannerClose">✕</button>
   </div>
 
@@ -29163,9 +29163,9 @@ to {
         <span class="kpi-label">Regularidade "A Comprovar"</span>
         <span class="kpi-icon">⚠️</span>
       </div>
-      <div class="kpi-value" id="kpiAComprovar">19</div>
+      <div class="kpi-value" id="kpiAComprovar">153</div>
       <div class="kpi-meta">
-        <span class="kpi-pct warn" id="kpiAComprovarPct">7%</span> do total
+        <span class="kpi-pct warn" id="kpiAComprovarPct">56.3%</span> do total
       </div>
     </div>
 
@@ -29174,9 +29174,9 @@ to {
         <span class="kpi-label">Pendências (itens)</span>
         <span class="kpi-icon">🚨</span>
       </div>
-      <div class="kpi-value" id="kpiPendencias">23</div>
+      <div class="kpi-value" id="kpiPendencias">170</div>
       <div class="kpi-meta">
-        <span id="kpiMediaPorOrgao">1.2</span> por órgão (média)
+        <span id="kpiMediaPorOrgao">1.1</span> por órgão (média)
       </div>
     </div>
 
@@ -29185,9 +29185,9 @@ to {
         <span class="kpi-label">Comprovados</span>
         <span class="kpi-icon">✅</span>
       </div>
-      <div class="kpi-value" id="kpiComprovados">221</div>
+      <div class="kpi-value" id="kpiComprovados">87</div>
       <div class="kpi-meta">
-        <span class="kpi-pct success" id="kpiComprovadosPct">81.3%</span> do total
+        <span class="kpi-pct success" id="kpiComprovadosPct">32%</span> do total
       </div>
     </div>
 
@@ -29196,7 +29196,7 @@ to {
         <span class="kpi-label">Códigos pendentes</span>
         <span class="kpi-icon">🔢</span>
       </div>
-      <div class="kpi-value" id="kpiCodigos">4</div>
+      <div class="kpi-value" id="kpiCodigos">5</div>
       <div class="kpi-meta">
         de 30 itens CAUC monitorados
       </div>
@@ -29548,26 +29548,803 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
 <script>
 /* === DADOS INICIAIS EMBUTIDOS DO RELATÓRIO === */
 const INITIAL_DATA = {
-  "dataPesquisa": "05/08/2026",
+  "dataPesquisa": "18/08/2026",
   "totals": {
     "total": 272,
     "direta": 204,
     "indireta": 36,
-    "aComprovar": 19,
-    "aComprovarPct": 7,
-    "comprovados": 221,
-    "comprovadosPct": 81.3,
-    "pendencias": 23,
-    "mediaPorOrgao": 1.2,
-    "codigosUnicos": 4
+    "aComprovar": 153,
+    "aComprovarPct": 56.3,
+    "comprovados": 87,
+    "comprovadosPct": 32,
+    "pendencias": 170,
+    "mediaPorOrgao": 1.1,
+    "codigosUnicos": 5
   },
   "pendencias": [
+    {
+      "CNPJ": "06.354.468/0001-60",
+      "Nome": "ESTADO DO MARANHAO",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "13.127.340/0001-20",
+      "Nome": "SECRETARIA DE ESTADO DE ADMINISTRACAO PENITENCIARIA - SEAP",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "08.918.125/0001-07",
+      "Nome": "11 BATALHAO DE POLICIA MILITAR",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "23.299.066/0001-20",
+      "Nome": "12 BATALHAO DE BOMBEIROS MILITAR",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "32.841.399/0001-20",
+      "Nome": "14A COMPANHIA INDEPENDENTE DE BOMBEIROS MILITAR (14A CIBM)",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "07.561.049/0001-62",
+      "Nome": "16 BATALHAO DE POLICIA MILITAR - 16. BPM",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "07.572.096/0001-01",
+      "Nome": "17 BATALHAO DE POLICIA MILITAR - BPM",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "33.634.290/0001-84",
+      "Nome": "2 COMPANHIA INDEPENDENTE DE BOMBEIROS MILITAR",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "24.090.302/0001-66",
+      "Nome": "30 BATALHAO DE POLICIA MILITAR",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "07.596.857/0001-65",
+      "Nome": "35 BATALHAO DE POLICIA MILITAR",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "32.848.796/0001-23",
+      "Nome": "5A COMPANHIA INDEPENDENTE DE BOMBEIROS MILITAR (5ACIBM)",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "22.604.157/0001-69",
+      "Nome": "6: BATALHAO DE BOMBEIROS MILITAR",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "23.640.872/0001-10",
+      "Nome": "7* DELEGACIA REGIONAL DE SANTA INES - MA",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "22.806.250/0001-56",
+      "Nome": "7: BATALHAO DE BOMBEIROS MILITAR",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "22.652.399/0001-28",
+      "Nome": "9: BATALHAO DE BOMBEIROS MILITAR",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "24.723.042/0001-19",
+      "Nome": "ACADEMIA DE POLICIA MILITAR GONCALVES DIAS",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "23.310.197/0001-60",
+      "Nome": "BATALHAO DE BOMBEIROS MARITIMOS",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "24.719.747/0001-62",
+      "Nome": "BATALHAO DE MISSOES ESPECIAIS",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "24.977.127/0001-23",
+      "Nome": "BATALHAO DE POLICIA AMBIENTAL",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "26.910.466/0001-18",
+      "Nome": "CENTRO DE INTELIGENCIA DA POLICIA CIVIL - MA",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "03.628.011/0001-09",
+      "Nome": "CENTRO DE SAUDE DA CIDADE OPERARIA",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "30.957.002/0001-34",
+      "Nome": "CMTV DA POLICIA MILITAR",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "22.626.750/0001-06",
+      "Nome": "COLEGIO MILITAR TIRADENTES II",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "29.492.637/0001-24",
+      "Nome": "COLEGIO MILITAR TIRADENTES IV",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "40.986.271/0001-82",
+      "Nome": "COMANDO OPERACIONAL DO CORPO DE BOMBEIROS DE AREA-03 (COCB-03)",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "24.256.995/0001-14",
+      "Nome": "COMPANHIA INDEPENDENTE DE POLICIA MILITAR RODOVIARIO DO ESTADO DO MARANHAO.",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "23.711.962/0001-54",
+      "Nome": "COORDENADORIA ESTADUAL DE PROTECAO E DEFESA CIVIL",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "23.788.742/0001-29",
+      "Nome": "DECIMA DELEGACIA REGIONAL DE IMPERATRIZ - MA",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "24.395.967/0001-88",
+      "Nome": "DECIMA OITAVA DELEGACIA REGIONAL DE TIMON - MA",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "23.798.323/0001-78",
+      "Nome": "DECIMA QUARTA DELEGACIA REGIONAL DE PEDREIRAS - MA",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "23.839.225/0001-31",
+      "Nome": "DECIMA SETIMA DELEGACIA REGIONAL DE CAXIAS - MA",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "23.824.470/0001-75",
+      "Nome": "DECIMA SEXTA DELEGACIA REGIONAL DE BACABAL - MA",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "23.929.339/0001-72",
+      "Nome": "DECIMA TERCEIRA DELEGACIA REGIONAL DE PRESIDENTE DUTRA-MA",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "08.455.694/0001-63",
+      "Nome": "DECIMO NONO BATALHAO  DE POLICIA MILITAR INDEPENDENTE - 19 BPM",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "03.009.813/0001-30",
+      "Nome": "ESCOLA SUPERIOR DA MAGISTRATURA DO ESTADO DO MARANHAO",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "13.601.172/0001-62",
+      "Nome": "ESTADO DO MARANHAO - 12 BATALHAO DE POLICIA MILITAR DE ESTREITO",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "07.584.885/0001-62",
+      "Nome": "ESTADO DO MARANHAO - 2A COMPANHIA DE POLICIA MILITAR INDEPENDENTE",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "07.906.706/0001-66",
+      "Nome": "ESTADO DO MARANHAO - 3 BATALHAO DE BOMBEIROS MILITAR",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "06.071.899/0001-10",
+      "Nome": "ESTADO DO MARANHAO - 4 BATALHAO DE POLICIA MILITAR DE BALSAS",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "09.181.687/0001-83",
+      "Nome": "ESTADO DO MARANHAO - 4 GRUPAMENTO DE BOMBEIROS MILITAR",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "09.210.082/0001-73",
+      "Nome": "ESTADO DO MARANHAO - 5 AGRUPAMENTO DO CORPO DE BOMBEIROS MILITAR CAXIAS-MA",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "06.088.448/0001-95",
+      "Nome": "ESTADO DO MARANHAO - 5 BATALHAO DE POLICIA MILITAR - BPM - BARRA DO CORDA",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "10.470.643/0001-52",
+      "Nome": "ESTADO DO MARANHAO - 8 GRUPAMENTO DE BOMBEIROS MILITAR",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "05.294.848/0001-94",
+      "Nome": "ESTADO DO MARANHAO - ASSEMBLEIA LEGISLATIVA DO ESTADO",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "00.545.704/0001-40",
+      "Nome": "ESTADO DO MARANHAO - CASA CIVIL",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "03.704.144/0001-17",
+      "Nome": "ESTADO DO MARANHAO - CENTRO DE SAUDE DR PAULO RAMOS",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "00.705.290/0001-79",
+      "Nome": "ESTADO DO MARANHAO - COMISSAO CENTRAL PERMANENTE DE LICITACAO",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "74.134.461/0001-93",
+      "Nome": "ESTADO DO MARANHAO - CORPO DE BOMBEIROS MILITARES DO MARANHAO",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "07.613.339/0001-02",
+      "Nome": "ESTADO DO MARANHAO - DECIMO BATALHAO DE POLICIA MILITAR - 10 BPM",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "00.820.295/0001-42",
+      "Nome": "ESTADO DO MARANHAO - DEFENSORIA PUBLICA DO ESTADO DO MARANHAO",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "05.019.702/0001-30",
+      "Nome": "ESTADO DO MARANHAO - FUNDO DE MODERNIZACAO DO TRIBUNAL DE CONTAS",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "07.586.805/0001-08",
+      "Nome": "ESTADO DO MARANHAO - FUNDO ESTADUAL DE DESENVOLVIMENTO INDUSTRIAL DO ESTADO DO MARANHAO/FDI",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "06.023.953/0001-51",
+      "Nome": "ESTADO DO MARANHAO - FUNDO ESTADUAL DE SAUDE / FES",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "09.635.234/0001-80",
+      "Nome": "ESTADO DO MARANHAO - FUNDO MARANHENSE DE COMBATE A POBREZA",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "07.524.465/0001-90",
+      "Nome": "ESTADO DO MARANHAO - FUNDO PENITENCIARIO ESTADUAL",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "11.620.088/0001-60",
+      "Nome": "ESTADO DO MARANHAO - HOSPITAL REGIONAL DE URGENCIA E EMERGENCIA DE PRESIDENTE DUTRA",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "06.032.924/0001-56",
+      "Nome": "ESTADO DO MARANHAO - INSTITUTO MARANHENSE DE TECNOLOGIA EDUCACIONAL",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "01.729.440/0001-47",
+      "Nome": "ESTADO DO MARANHAO - JUIZO DA PRIMEIRA VARA DE PEDREIRAS",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "00.459.854/0001-30",
+      "Nome": "ESTADO DO MARANHAO - JUIZO DE DIREITO DA TERC VARA DA COMARCA DE PEDREIRAS",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "02.428.343/0001-87",
+      "Nome": "ESTADO DO MARANHAO - NUCLEO ESTADUAL DE PROGRAMAS ESPECIAIS / NEPE",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "09.554.912/0001-80",
+      "Nome": "ESTADO DO MARANHAO - POLICIA CIVIL DO ESTADO DO MARANHAO",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "06.650.139/0001-67",
+      "Nome": "ESTADO DO MARANHAO - POLICIA MILITAR DO MARANHAO",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "28.313.148/0001-03",
+      "Nome": "ESTADO DO MARANHAO - POLICIA MILITAR DO MARANHAO",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "03.352.086/0001-00",
+      "Nome": "ESTADO DO MARANHAO - SECRETARIA DE ESTADO DA EDUCACAO",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "03.526.252/0001-47",
+      "Nome": "ESTADO DO MARANHAO - SECRETARIA DE ESTADO DA FAZENDA",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "08.892.295/0001-60",
+      "Nome": "ESTADO DO MARANHAO - SECRETARIA DE ESTADO DA INFRAESTRUTURA",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "02.973.240/0001-06",
+      "Nome": "ESTADO DO MARANHAO - SECRETARIA DE ESTADO DA SAUDE",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "06.354.500/0001-08",
+      "Nome": "ESTADO DO MARANHAO - SECRETARIA DE ESTADO DA SEGURANCA PUBLICA",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "24.393.108/0001-50",
+      "Nome": "ESTADO DO MARANHAO - SECRETARIA DE ESTADO DE GOVERNO",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "05.023.045/0001-03",
+      "Nome": "ESTADO DO MARANHAO - SECRETARIA DE ESTADO DE MEIO AMBIENTE E RECURSOS NATURAIS",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "13.779.769/0001-00",
+      "Nome": "ESTADO DO MARANHAO - SECRETARIA DE ESTADO DE MINAS E ENERGIA",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "02.940.097/0001-48",
+      "Nome": "ESTADO DO MARANHAO - SECRETARIA DE ESTADO DO DESENVOLVIMENTO SOCIAL",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
     {
       "CNPJ": "02.940.097/0001-48",
       "Nome": "ESTADO DO MARANHAO - SECRETARIA DE ESTADO DO DESENVOLVIMENTO SOCIAL",
       "Tipo de Administração": "Direta",
       "Código": "2.1.1",
       "Descrição": "Prestação de Contas de Recursos Federais - SIAFI/Subsistema Transferências"
+    },
+    {
+      "CNPJ": "05.506.465/0001-32",
+      "Nome": "ESTADO DO MARANHAO - SECRETARIA DE ESTADO DO ESPORTE",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "05.022.633/0001-14",
+      "Nome": "ESTADO DO MARANHAO - SECRETARIA DE ESTADO DO PLANEJAMENTO E ORCAMENTO",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "08.583.407/0001-09",
+      "Nome": "ESTADO DO MARANHAO - SECRETARIA DE ESTADO DO TRABALHO E DA ECONOMIA SOLIDARIA",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "05.681.116/0001-57",
+      "Nome": "ESTADO DO MARANHAO - SECRETARIA DE ESTADO EXTRAORDINARIA DE COORD DO PROGRAMA ESPEC DE SAUDE PREVENTIVA",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "21.853.640/0001-14",
+      "Nome": "ESTADO DO MARANHAO - SECRETARIA DE TRANSPARENCIA E CONTROLE",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "06.989.347/0001-95",
+      "Nome": "ESTADO DO MARANHAO - TRIBUNAL DE CONTAS DO ESTADO",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "05.288.790/0001-76",
+      "Nome": "ESTADO DO MARANHAO - TRIBUNAL DE JUSTICA DO MARANHAO",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "04.902.288/0001-40",
+      "Nome": "ESTADO DO MARANHAO - UNIDADE MISTA DE CARUTAPERA",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "02.631.708/0001-76",
+      "Nome": "ESTADO DO MARANHAO - VIVA CIDADAO",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "22.565.391/0001-24",
+      "Nome": "FUNDO DE APARELHAMENTO DA DEFENSORIA PUBLICA DO ESTADO - FADEP",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "03.110.963/0001-36",
+      "Nome": "FUNDO DE BENEFICIOS DOS SERVIDORES DO ESTADO DO MARANHAO",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "03.431.656/0001-57",
+      "Nome": "FUNDO DE DESENVOLVIMENTO AGROPECUARIO E AGROINDUSTRIAL DO ESTADO DO MARANHAO",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "16.925.522/0001-34",
+      "Nome": "FUNDO DE DESENVOLVIMENTO DA CULTURA MARANHENSE - FUNDECMA",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "28.562.744/0001-19",
+      "Nome": "FUNDO DE DESENVOLVIMENTO DA REGIAO METROPOLITANA DA GRANDE SAO LUIS",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "07.467.623/0001-18",
+      "Nome": "FUNDO DE FORTALECIMENTO DA ADMINISTRACAO TRIBUTARIA",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "08.336.408/0001-40",
+      "Nome": "FUNDO ESPECIAL DA ESCOLA SUPERIOR DA MAGISTRATURA DO ESTADO DO MARANHAO - FUNDO ESMAM",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "11.627.372/0001-69",
+      "Nome": "FUNDO ESPECIAL DAS SERVENTIAS DE REGISTRO CIVIL DE PESSOAS NATURAIS DO ESTADO DO MARANHAO-FERC",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "08.772.136/0001-21",
+      "Nome": "FUNDO ESPECIAL DO MINISTERIO PUBLICO ESTADUAL -",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "07.415.294/0001-61",
+      "Nome": "FUNDO ESTADUAL ANTIDROGAS",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "20.506.692/0001-51",
+      "Nome": "FUNDO ESTADUAL DE APOIO AO DESENVOLVIMENTO DOS MUNICIPIOS DO MARANHAO - FUNDEMA",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "01.881.070/0001-69",
+      "Nome": "FUNDO ESTADUAL DE ASSISTENCIA SOCIAL",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "25.274.272/0001-00",
+      "Nome": "FUNDO ESTADUAL DE COMBATE AO CANCER",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "05.587.579/0001-54",
+      "Nome": "FUNDO ESTADUAL DE ESPORTES",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "03.110.907/0001-00",
+      "Nome": "FUNDO ESTADUAL DE PENSAO E APOSENTADORIA",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "23.417.558/0001-72",
+      "Nome": "FUNDO ESTADUAL DE RECURSOS HIDRICOS - FERH",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "01.933.502/0001-38",
+      "Nome": "FUNDO ESTADUAL DOS DIREITOS DA CRIANCA E DO ADOLESCENTE-FEDCA",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "20.873.864/0001-25",
+      "Nome": "FUNSEG-JE - FUNDO ESPECIAL DE SEGURANCA DOS MAGISTRADOS",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "10.978.838/0001-08",
+      "Nome": "HOSPITAL DE REFERENCIA ESTADUAL DE ALTA COMPLEXIDADE DR. CARLOS MACIEIRA",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "05.812.028/0001-47",
+      "Nome": "HOSPITAL DR ADELSON DE SOUZA LOPES",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "03.810.950/0001-70",
+      "Nome": "MATERNIDADE BENEDITO LEITE",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "30.020.642/0001-13",
+      "Nome": "NUCLEO DE ASSISTENCIA DOS SERVIDORES PUBLICOS DO ESTADO DO MARANHAO",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "23.948.156/0001-02",
+      "Nome": "OITAVA DELEGACIA REGIONAL DE ZE DOCA - MA",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "37.961.796/0001-59",
+      "Nome": "PERICIA OFICIAL DE NATUREZA CRIMINAL",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "24.072.503/0001-30",
+      "Nome": "PRIMEIRA DELEGACIA REGIONAL DE ROSARIO-MA",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "39.736.013/0001-69",
+      "Nome": "PRIMEIRO BATALHAO DE BOMBEIROS MILITAR",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "23.799.694/0001-74",
+      "Nome": "QUARTA DELEGACIA REGIONAL DE CODO - MA",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "06.067.839/0001-23",
+      "Nome": "REPRESENTACAO DO I N P M NO ESTADO DO MARANHAO",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "09.556.140/0001-15",
+      "Nome": "SECRETARIA DE ESTADO  DE DIREITOS HUMANOS E PARTICIPACAO POPULAR-SEDIHPOP.",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "15.553.806/0001-84",
+      "Nome": "SECRETARIA DE ESTADO DA ADMINISTRACAO",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
     },
     {
       "CNPJ": "05.025.553/0001-12",
@@ -29577,11 +30354,151 @@ const INITIAL_DATA = {
       "Descrição": "Regularidade perante o Poder Público Federal"
     },
     {
+      "CNPJ": "21.681.460/0001-00",
+      "Nome": "SECRETARIA DE ESTADO DA AGRICULTURA FAMILIAR - SAF",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "05.572.043/0001-65",
+      "Nome": "SECRETARIA DE ESTADO DA CIENCIA, TECNOLOGIA E INOVACAO - SECTI",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "05.508.362/0001-01",
+      "Nome": "SECRETARIA DE ESTADO DA CULTURA - SECMA",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "05.541.216/0001-88",
+      "Nome": "SECRETARIA DE ESTADO DE ARTICULACAO POLITICA - SECAP",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "05.032.043/0001-72",
+      "Nome": "SECRETARIA DE ESTADO DE INDUSTRIA E COMERCIO",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "05.997.006/0001-07",
+      "Nome": "SECRETARIA DE ESTADO DE SOLIDERIEDADE HUMANA ESCRITORIO DO LESTE MARANHENSE",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "23.850.243/0001-14",
+      "Nome": "SEGUNDA DELEGACIA REGIONAL DE ITAPECURU MIRIM - MA",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "42.162.979/0001-44",
+      "Nome": "SEGUNDO BATALHAO DE BOMBEIROS MILITAR",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "27.073.538/0001-82",
+      "Nome": "SUPERINTENDENCIA DE POLICIA CIVIL DA CAPITAL - MA",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "26.914.963/0001-94",
+      "Nome": "SUPERINTENDENCIA DE POLICIA CIVIL DO INTERIOR - MA",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "26.852.091/0001-87",
+      "Nome": "SUPERINTENDENCIA DE POLICIA TECNICO-CIENTIFICA - MA",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "23.764.655/0001-31",
+      "Nome": "SUPERINTENDENCIA ESTADUAL DE INVESTIGACAO DE HOMICIDIOS E PROTECAO A PESSOA",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "26.481.786/0001-08",
+      "Nome": "SUPERINTENDENCIA ESTADUAL DE REPRESSAO AO NARCOTRAFICO - SENARC - MA",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "23.830.107/0001-62",
+      "Nome": "TERCEIRA DELEGACIA REGIONAL DE CHAPADINHA - MA",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "22.503.819/0001-04",
+      "Nome": "UNIDADE ESCOLAR JOAO SOBREIRA DE LIMA",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "06.084.789/0001-92",
+      "Nome": "VIGESIMO SEXTO BATALHAO DE POLICIA MILITAR",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "57.813.837/0001-77",
+      "Nome": "AGENCIA DE DESENVOLVIMENTO DO ESTADO DO MARANHAO S/A - INVESTE MARANHAO",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.1",
+      "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"
+    },
+    {
       "CNPJ": "57.813.837/0001-77",
       "Nome": "AGENCIA DE DESENVOLVIMENTO DO ESTADO DO MARANHAO S/A - INVESTE MARANHAO",
       "Tipo de Administração": "Indireta",
       "Código": "1.5",
       "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "05.057.657/0001-09",
+      "Nome": "AGENCIA ESTADUAL DE DEFESA AGROPECUARIA DO MARANHAO",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.1",
+      "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"
+    },
+    {
+      "CNPJ": "08.578.592/0001-35",
+      "Nome": "AGENCIA ESTADUAL DE MOBILIDADE URBANA E SERVICOS PUBLICOS - MOB",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.1",
+      "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"
+    },
+    {
+      "CNPJ": "08.593.102/0001-70",
+      "Nome": "AGENCIA ESTADUAL DE PESQUISA AGROPECUARIA E EXTENSAO RURAL DO MARANHAO - AGERP / MA",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.1",
+      "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"
     },
     {
       "CNPJ": "08.593.102/0001-70",
@@ -29591,11 +30508,53 @@ const INITIAL_DATA = {
       "Descrição": "Regularidade perante o Poder Público Federal"
     },
     {
+      "CNPJ": "54.357.698/0001-26",
+      "Nome": "AGENCIA ESTADUAL DE TECNOLOGIA DA INFORMACAO - ATI/MA",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.1",
+      "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"
+    },
+    {
+      "CNPJ": "60.794.030/0001-49",
+      "Nome": "AGENCIA EXECUTIVA METROPOLITANA DO LESTE MARANHENSE - AGEMLESTE",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.1",
+      "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"
+    },
+    {
       "CNPJ": "60.794.030/0001-49",
       "Nome": "AGENCIA EXECUTIVA METROPOLITANA DO LESTE MARANHENSE - AGEMLESTE",
       "Tipo de Administração": "Indireta",
       "Código": "1.5",
       "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "29.180.696/0001-67",
+      "Nome": "AGENCIA EXECUTIVA METROPOLITANA DO SUDOESTE MARANHENSE - AGEMSUL",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.1",
+      "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"
+    },
+    {
+      "CNPJ": "05.694.533/0001-34",
+      "Nome": "AGENCIA REGULADORA DE SERVICOS PUBLICOS DO MARANHAO",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.1",
+      "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"
+    },
+    {
+      "CNPJ": "57.940.134/0001-00",
+      "Nome": "COMPANHIA ADMINISTRADORA DA ZONA DE PROCESSAMENTO DE EXPORTACAO DE BACABEIRA S. A. - ZPE MARANHAO",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.1",
+      "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"
+    },
+    {
+      "CNPJ": "06.274.757/0001-50",
+      "Nome": "COMPANHIA DE SANEAMENTO AMBIENTAL DO MARANHAO-CAEMA",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.1",
+      "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"
     },
     {
       "CNPJ": "06.274.757/0001-50",
@@ -29608,6 +30567,13 @@ const INITIAL_DATA = {
       "CNPJ": "06.293.120/0001-00",
       "Nome": "DEPARTAMENTO ESTADUAL DE TRANSITO",
       "Tipo de Administração": "Indireta",
+      "Código": "1.1",
+      "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"
+    },
+    {
+      "CNPJ": "06.293.120/0001-00",
+      "Nome": "DEPARTAMENTO ESTADUAL DE TRANSITO",
+      "Tipo de Administração": "Indireta",
       "Código": "1.5",
       "Descrição": "Regularidade perante o Poder Público Federal"
     },
@@ -29615,8 +30581,29 @@ const INITIAL_DATA = {
       "CNPJ": "18.519.709/0001-63",
       "Nome": "EMPRESA MARANHENSE DE SERVICOS HOSPITALARES - EMSERH",
       "Tipo de Administração": "Indireta",
+      "Código": "1.1",
+      "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"
+    },
+    {
+      "CNPJ": "18.519.709/0001-63",
+      "Nome": "EMPRESA MARANHENSE DE SERVICOS HOSPITALARES - EMSERH",
+      "Tipo de Administração": "Indireta",
       "Código": "1.5",
       "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "69.382.307/0001-09",
+      "Nome": "FUND CULT ASSIST E ECOLOGICA O HOMEM E A NATUREZA",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.1",
+      "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"
+    },
+    {
+      "CNPJ": "05.632.559/0001-58",
+      "Nome": "FUNDACAO DE ATENDIMENTO SOCIEDUCATIVO DO MARANHAO - FASE/MA",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.1",
+      "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"
     },
     {
       "CNPJ": "05.632.559/0001-58",
@@ -29629,8 +30616,22 @@ const INITIAL_DATA = {
       "CNPJ": "97.357.420/0001-61",
       "Nome": "FUNDACAO NICE LOBAO",
       "Tipo de Administração": "Indireta",
+      "Código": "1.1",
+      "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"
+    },
+    {
+      "CNPJ": "97.357.420/0001-61",
+      "Nome": "FUNDACAO NICE LOBAO",
+      "Tipo de Administração": "Indireta",
       "Código": "1.5",
       "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "07.450.928/0001-17",
+      "Nome": "FUNDO ESTADUAL DE PROTECAO E DEFESA DOS DIREITOS DO CONSUMIDOR - PROCON",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.1",
+      "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"
     },
     {
       "CNPJ": "01.596.450/0001-51",
@@ -29650,8 +30651,22 @@ const INITIAL_DATA = {
       "CNPJ": "08.597.004/0001-00",
       "Nome": "INSTITUTO MARANHENSE DE ESTUDOS SOCIOECONOMICO E CARTOGRAFICO - IMESC",
       "Tipo de Administração": "Indireta",
+      "Código": "1.1",
+      "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"
+    },
+    {
+      "CNPJ": "08.597.004/0001-00",
+      "Nome": "INSTITUTO MARANHENSE DE ESTUDOS SOCIOECONOMICO E CARTOGRAFICO - IMESC",
+      "Tipo de Administração": "Indireta",
       "Código": "1.5",
       "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "05.289.160/0001-16",
+      "Nome": "JUNTA COMERCIAL DO ESTADO DO MARANHAO",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.1",
+      "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"
     },
     {
       "CNPJ": "05.289.160/0001-16",
@@ -29671,6 +30686,13 @@ const INITIAL_DATA = {
       "CNPJ": "06.048.904/0001-73",
       "Nome": "MUNICIPIO DE SAO LUIS - ESCRITORIO TECNICO DE ADMINISTRACAO MUNICIPAL",
       "Tipo de Administração": "Indireta",
+      "Código": "1.1",
+      "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"
+    },
+    {
+      "CNPJ": "06.048.904/0001-73",
+      "Nome": "MUNICIPIO DE SAO LUIS - ESCRITORIO TECNICO DE ADMINISTRACAO MUNICIPAL",
+      "Tipo de Administração": "Indireta",
       "Código": "1.5",
       "Descrição": "Regularidade perante o Poder Público Federal"
     },
@@ -29680,6 +30702,13 @@ const INITIAL_DATA = {
       "Tipo de Administração": "Indireta",
       "Código": "1.5",
       "Descrição": "Regularidade perante o Poder Público Federal"
+    },
+    {
+      "CNPJ": "15.201.913/0001-43",
+      "Nome": "ASSOCIACAO DOS CONSUMIDORES DE ENERGIA, AGUA,ESGOTO,TELEFONIA, PROPRIETARIOS DE VEICULOS AUTOMOTORES, USUARIOS DE SERVICOS PUBLICOS E PARTICULAR",
+      "Tipo de Administração": "Indireta",
+      "Código": "1.1",
+      "Descrição": "Regularidade quanto a Tributos, Contribuições Previdenciárias Federais e Dívida Ativa da União"
     },
     {
       "CNPJ": "15.201.913/0001-43",
@@ -29725,8 +30754,9 @@ const INITIAL_DATA = {
     }
   ],
   "codeCounts": {
+    "1.5": 145,
     "2.1.1": 1,
-    "1.5": 18,
+    "1.1": 20,
     "1.2": 2,
     "1.4": 2
   },
@@ -29736,6 +30766,7 @@ const INITIAL_DATA = {
       "Nome": "ASSOCIACAO DOS CONSUMIDORES DE ENERGIA, AGUA,ESGOTO,TELEFONIA, PROPRIETARIOS DE VEICULOS AUTOMOTORES, USUARIOS DE SERVICOS PUBLICOS E PARTICULAR",
       "Tipo": "Indireta",
       "codes": [
+        "1.1",
         "1.2",
         "1.4",
         "1.5"
@@ -29756,7 +30787,987 @@ const INITIAL_DATA = {
       "Nome": "ESTADO DO MARANHAO - SECRETARIA DE ESTADO DO DESENVOLVIMENTO SOCIAL",
       "Tipo": "Direta",
       "codes": [
+        "1.5",
         "2.1.1"
+      ]
+    },
+    {
+      "CNPJ": "57.813.837/0001-77",
+      "Nome": "AGENCIA DE DESENVOLVIMENTO DO ESTADO DO MARANHAO S/A - INVESTE MARANHAO",
+      "Tipo": "Indireta",
+      "codes": [
+        "1.1",
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "08.593.102/0001-70",
+      "Nome": "AGENCIA ESTADUAL DE PESQUISA AGROPECUARIA E EXTENSAO RURAL DO MARANHAO - AGERP / MA",
+      "Tipo": "Indireta",
+      "codes": [
+        "1.1",
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "60.794.030/0001-49",
+      "Nome": "AGENCIA EXECUTIVA METROPOLITANA DO LESTE MARANHENSE - AGEMLESTE",
+      "Tipo": "Indireta",
+      "codes": [
+        "1.1",
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "06.274.757/0001-50",
+      "Nome": "COMPANHIA DE SANEAMENTO AMBIENTAL DO MARANHAO-CAEMA",
+      "Tipo": "Indireta",
+      "codes": [
+        "1.1",
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "06.293.120/0001-00",
+      "Nome": "DEPARTAMENTO ESTADUAL DE TRANSITO",
+      "Tipo": "Indireta",
+      "codes": [
+        "1.1",
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "18.519.709/0001-63",
+      "Nome": "EMPRESA MARANHENSE DE SERVICOS HOSPITALARES - EMSERH",
+      "Tipo": "Indireta",
+      "codes": [
+        "1.1",
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "05.632.559/0001-58",
+      "Nome": "FUNDACAO DE ATENDIMENTO SOCIEDUCATIVO DO MARANHAO - FASE/MA",
+      "Tipo": "Indireta",
+      "codes": [
+        "1.1",
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "97.357.420/0001-61",
+      "Nome": "FUNDACAO NICE LOBAO",
+      "Tipo": "Indireta",
+      "codes": [
+        "1.1",
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "08.597.004/0001-00",
+      "Nome": "INSTITUTO MARANHENSE DE ESTUDOS SOCIOECONOMICO E CARTOGRAFICO - IMESC",
+      "Tipo": "Indireta",
+      "codes": [
+        "1.1",
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "05.289.160/0001-16",
+      "Nome": "JUNTA COMERCIAL DO ESTADO DO MARANHAO",
+      "Tipo": "Indireta",
+      "codes": [
+        "1.1",
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "06.048.904/0001-73",
+      "Nome": "MUNICIPIO DE SAO LUIS - ESCRITORIO TECNICO DE ADMINISTRACAO MUNICIPAL",
+      "Tipo": "Indireta",
+      "codes": [
+        "1.1",
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "06.354.468/0001-60",
+      "Nome": "ESTADO DO MARANHAO",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "13.127.340/0001-20",
+      "Nome": "SECRETARIA DE ESTADO DE ADMINISTRACAO PENITENCIARIA - SEAP",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "08.918.125/0001-07",
+      "Nome": "11 BATALHAO DE POLICIA MILITAR",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "23.299.066/0001-20",
+      "Nome": "12 BATALHAO DE BOMBEIROS MILITAR",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "32.841.399/0001-20",
+      "Nome": "14A COMPANHIA INDEPENDENTE DE BOMBEIROS MILITAR (14A CIBM)",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "07.561.049/0001-62",
+      "Nome": "16 BATALHAO DE POLICIA MILITAR - 16. BPM",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "07.572.096/0001-01",
+      "Nome": "17 BATALHAO DE POLICIA MILITAR - BPM",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "33.634.290/0001-84",
+      "Nome": "2 COMPANHIA INDEPENDENTE DE BOMBEIROS MILITAR",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "24.090.302/0001-66",
+      "Nome": "30 BATALHAO DE POLICIA MILITAR",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "07.596.857/0001-65",
+      "Nome": "35 BATALHAO DE POLICIA MILITAR",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "32.848.796/0001-23",
+      "Nome": "5A COMPANHIA INDEPENDENTE DE BOMBEIROS MILITAR (5ACIBM)",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "22.604.157/0001-69",
+      "Nome": "6: BATALHAO DE BOMBEIROS MILITAR",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "23.640.872/0001-10",
+      "Nome": "7* DELEGACIA REGIONAL DE SANTA INES - MA",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "22.806.250/0001-56",
+      "Nome": "7: BATALHAO DE BOMBEIROS MILITAR",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "22.652.399/0001-28",
+      "Nome": "9: BATALHAO DE BOMBEIROS MILITAR",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "24.723.042/0001-19",
+      "Nome": "ACADEMIA DE POLICIA MILITAR GONCALVES DIAS",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "23.310.197/0001-60",
+      "Nome": "BATALHAO DE BOMBEIROS MARITIMOS",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "24.719.747/0001-62",
+      "Nome": "BATALHAO DE MISSOES ESPECIAIS",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "24.977.127/0001-23",
+      "Nome": "BATALHAO DE POLICIA AMBIENTAL",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "26.910.466/0001-18",
+      "Nome": "CENTRO DE INTELIGENCIA DA POLICIA CIVIL - MA",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "03.628.011/0001-09",
+      "Nome": "CENTRO DE SAUDE DA CIDADE OPERARIA",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "30.957.002/0001-34",
+      "Nome": "CMTV DA POLICIA MILITAR",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "22.626.750/0001-06",
+      "Nome": "COLEGIO MILITAR TIRADENTES II",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "29.492.637/0001-24",
+      "Nome": "COLEGIO MILITAR TIRADENTES IV",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "40.986.271/0001-82",
+      "Nome": "COMANDO OPERACIONAL DO CORPO DE BOMBEIROS DE AREA-03 (COCB-03)",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "24.256.995/0001-14",
+      "Nome": "COMPANHIA INDEPENDENTE DE POLICIA MILITAR RODOVIARIO DO ESTADO DO MARANHAO.",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "23.711.962/0001-54",
+      "Nome": "COORDENADORIA ESTADUAL DE PROTECAO E DEFESA CIVIL",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "23.788.742/0001-29",
+      "Nome": "DECIMA DELEGACIA REGIONAL DE IMPERATRIZ - MA",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "24.395.967/0001-88",
+      "Nome": "DECIMA OITAVA DELEGACIA REGIONAL DE TIMON - MA",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "23.798.323/0001-78",
+      "Nome": "DECIMA QUARTA DELEGACIA REGIONAL DE PEDREIRAS - MA",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "23.839.225/0001-31",
+      "Nome": "DECIMA SETIMA DELEGACIA REGIONAL DE CAXIAS - MA",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "23.824.470/0001-75",
+      "Nome": "DECIMA SEXTA DELEGACIA REGIONAL DE BACABAL - MA",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "23.929.339/0001-72",
+      "Nome": "DECIMA TERCEIRA DELEGACIA REGIONAL DE PRESIDENTE DUTRA-MA",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "08.455.694/0001-63",
+      "Nome": "DECIMO NONO BATALHAO  DE POLICIA MILITAR INDEPENDENTE - 19 BPM",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "03.009.813/0001-30",
+      "Nome": "ESCOLA SUPERIOR DA MAGISTRATURA DO ESTADO DO MARANHAO",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "13.601.172/0001-62",
+      "Nome": "ESTADO DO MARANHAO - 12 BATALHAO DE POLICIA MILITAR DE ESTREITO",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "07.584.885/0001-62",
+      "Nome": "ESTADO DO MARANHAO - 2A COMPANHIA DE POLICIA MILITAR INDEPENDENTE",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "07.906.706/0001-66",
+      "Nome": "ESTADO DO MARANHAO - 3 BATALHAO DE BOMBEIROS MILITAR",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "06.071.899/0001-10",
+      "Nome": "ESTADO DO MARANHAO - 4 BATALHAO DE POLICIA MILITAR DE BALSAS",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "09.181.687/0001-83",
+      "Nome": "ESTADO DO MARANHAO - 4 GRUPAMENTO DE BOMBEIROS MILITAR",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "09.210.082/0001-73",
+      "Nome": "ESTADO DO MARANHAO - 5 AGRUPAMENTO DO CORPO DE BOMBEIROS MILITAR CAXIAS-MA",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "06.088.448/0001-95",
+      "Nome": "ESTADO DO MARANHAO - 5 BATALHAO DE POLICIA MILITAR - BPM - BARRA DO CORDA",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "10.470.643/0001-52",
+      "Nome": "ESTADO DO MARANHAO - 8 GRUPAMENTO DE BOMBEIROS MILITAR",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "05.294.848/0001-94",
+      "Nome": "ESTADO DO MARANHAO - ASSEMBLEIA LEGISLATIVA DO ESTADO",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "00.545.704/0001-40",
+      "Nome": "ESTADO DO MARANHAO - CASA CIVIL",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "03.704.144/0001-17",
+      "Nome": "ESTADO DO MARANHAO - CENTRO DE SAUDE DR PAULO RAMOS",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "00.705.290/0001-79",
+      "Nome": "ESTADO DO MARANHAO - COMISSAO CENTRAL PERMANENTE DE LICITACAO",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "74.134.461/0001-93",
+      "Nome": "ESTADO DO MARANHAO - CORPO DE BOMBEIROS MILITARES DO MARANHAO",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "07.613.339/0001-02",
+      "Nome": "ESTADO DO MARANHAO - DECIMO BATALHAO DE POLICIA MILITAR - 10 BPM",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "00.820.295/0001-42",
+      "Nome": "ESTADO DO MARANHAO - DEFENSORIA PUBLICA DO ESTADO DO MARANHAO",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "05.019.702/0001-30",
+      "Nome": "ESTADO DO MARANHAO - FUNDO DE MODERNIZACAO DO TRIBUNAL DE CONTAS",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "07.586.805/0001-08",
+      "Nome": "ESTADO DO MARANHAO - FUNDO ESTADUAL DE DESENVOLVIMENTO INDUSTRIAL DO ESTADO DO MARANHAO/FDI",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "06.023.953/0001-51",
+      "Nome": "ESTADO DO MARANHAO - FUNDO ESTADUAL DE SAUDE / FES",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "09.635.234/0001-80",
+      "Nome": "ESTADO DO MARANHAO - FUNDO MARANHENSE DE COMBATE A POBREZA",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "07.524.465/0001-90",
+      "Nome": "ESTADO DO MARANHAO - FUNDO PENITENCIARIO ESTADUAL",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "11.620.088/0001-60",
+      "Nome": "ESTADO DO MARANHAO - HOSPITAL REGIONAL DE URGENCIA E EMERGENCIA DE PRESIDENTE DUTRA",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "06.032.924/0001-56",
+      "Nome": "ESTADO DO MARANHAO - INSTITUTO MARANHENSE DE TECNOLOGIA EDUCACIONAL",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "01.729.440/0001-47",
+      "Nome": "ESTADO DO MARANHAO - JUIZO DA PRIMEIRA VARA DE PEDREIRAS",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "00.459.854/0001-30",
+      "Nome": "ESTADO DO MARANHAO - JUIZO DE DIREITO DA TERC VARA DA COMARCA DE PEDREIRAS",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "02.428.343/0001-87",
+      "Nome": "ESTADO DO MARANHAO - NUCLEO ESTADUAL DE PROGRAMAS ESPECIAIS / NEPE",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "09.554.912/0001-80",
+      "Nome": "ESTADO DO MARANHAO - POLICIA CIVIL DO ESTADO DO MARANHAO",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "06.650.139/0001-67",
+      "Nome": "ESTADO DO MARANHAO - POLICIA MILITAR DO MARANHAO",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "28.313.148/0001-03",
+      "Nome": "ESTADO DO MARANHAO - POLICIA MILITAR DO MARANHAO",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "03.352.086/0001-00",
+      "Nome": "ESTADO DO MARANHAO - SECRETARIA DE ESTADO DA EDUCACAO",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "03.526.252/0001-47",
+      "Nome": "ESTADO DO MARANHAO - SECRETARIA DE ESTADO DA FAZENDA",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "08.892.295/0001-60",
+      "Nome": "ESTADO DO MARANHAO - SECRETARIA DE ESTADO DA INFRAESTRUTURA",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "02.973.240/0001-06",
+      "Nome": "ESTADO DO MARANHAO - SECRETARIA DE ESTADO DA SAUDE",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "06.354.500/0001-08",
+      "Nome": "ESTADO DO MARANHAO - SECRETARIA DE ESTADO DA SEGURANCA PUBLICA",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "24.393.108/0001-50",
+      "Nome": "ESTADO DO MARANHAO - SECRETARIA DE ESTADO DE GOVERNO",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "05.023.045/0001-03",
+      "Nome": "ESTADO DO MARANHAO - SECRETARIA DE ESTADO DE MEIO AMBIENTE E RECURSOS NATURAIS",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "13.779.769/0001-00",
+      "Nome": "ESTADO DO MARANHAO - SECRETARIA DE ESTADO DE MINAS E ENERGIA",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "05.506.465/0001-32",
+      "Nome": "ESTADO DO MARANHAO - SECRETARIA DE ESTADO DO ESPORTE",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "05.022.633/0001-14",
+      "Nome": "ESTADO DO MARANHAO - SECRETARIA DE ESTADO DO PLANEJAMENTO E ORCAMENTO",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "08.583.407/0001-09",
+      "Nome": "ESTADO DO MARANHAO - SECRETARIA DE ESTADO DO TRABALHO E DA ECONOMIA SOLIDARIA",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "05.681.116/0001-57",
+      "Nome": "ESTADO DO MARANHAO - SECRETARIA DE ESTADO EXTRAORDINARIA DE COORD DO PROGRAMA ESPEC DE SAUDE PREVENTIVA",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "21.853.640/0001-14",
+      "Nome": "ESTADO DO MARANHAO - SECRETARIA DE TRANSPARENCIA E CONTROLE",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "06.989.347/0001-95",
+      "Nome": "ESTADO DO MARANHAO - TRIBUNAL DE CONTAS DO ESTADO",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "05.288.790/0001-76",
+      "Nome": "ESTADO DO MARANHAO - TRIBUNAL DE JUSTICA DO MARANHAO",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "04.902.288/0001-40",
+      "Nome": "ESTADO DO MARANHAO - UNIDADE MISTA DE CARUTAPERA",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "02.631.708/0001-76",
+      "Nome": "ESTADO DO MARANHAO - VIVA CIDADAO",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "22.565.391/0001-24",
+      "Nome": "FUNDO DE APARELHAMENTO DA DEFENSORIA PUBLICA DO ESTADO - FADEP",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "03.110.963/0001-36",
+      "Nome": "FUNDO DE BENEFICIOS DOS SERVIDORES DO ESTADO DO MARANHAO",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "03.431.656/0001-57",
+      "Nome": "FUNDO DE DESENVOLVIMENTO AGROPECUARIO E AGROINDUSTRIAL DO ESTADO DO MARANHAO",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "16.925.522/0001-34",
+      "Nome": "FUNDO DE DESENVOLVIMENTO DA CULTURA MARANHENSE - FUNDECMA",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "28.562.744/0001-19",
+      "Nome": "FUNDO DE DESENVOLVIMENTO DA REGIAO METROPOLITANA DA GRANDE SAO LUIS",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "07.467.623/0001-18",
+      "Nome": "FUNDO DE FORTALECIMENTO DA ADMINISTRACAO TRIBUTARIA",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "08.336.408/0001-40",
+      "Nome": "FUNDO ESPECIAL DA ESCOLA SUPERIOR DA MAGISTRATURA DO ESTADO DO MARANHAO - FUNDO ESMAM",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "11.627.372/0001-69",
+      "Nome": "FUNDO ESPECIAL DAS SERVENTIAS DE REGISTRO CIVIL DE PESSOAS NATURAIS DO ESTADO DO MARANHAO-FERC",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "08.772.136/0001-21",
+      "Nome": "FUNDO ESPECIAL DO MINISTERIO PUBLICO ESTADUAL -",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "07.415.294/0001-61",
+      "Nome": "FUNDO ESTADUAL ANTIDROGAS",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "20.506.692/0001-51",
+      "Nome": "FUNDO ESTADUAL DE APOIO AO DESENVOLVIMENTO DOS MUNICIPIOS DO MARANHAO - FUNDEMA",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "01.881.070/0001-69",
+      "Nome": "FUNDO ESTADUAL DE ASSISTENCIA SOCIAL",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "25.274.272/0001-00",
+      "Nome": "FUNDO ESTADUAL DE COMBATE AO CANCER",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "05.587.579/0001-54",
+      "Nome": "FUNDO ESTADUAL DE ESPORTES",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "03.110.907/0001-00",
+      "Nome": "FUNDO ESTADUAL DE PENSAO E APOSENTADORIA",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "23.417.558/0001-72",
+      "Nome": "FUNDO ESTADUAL DE RECURSOS HIDRICOS - FERH",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "01.933.502/0001-38",
+      "Nome": "FUNDO ESTADUAL DOS DIREITOS DA CRIANCA E DO ADOLESCENTE-FEDCA",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "20.873.864/0001-25",
+      "Nome": "FUNSEG-JE - FUNDO ESPECIAL DE SEGURANCA DOS MAGISTRADOS",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "10.978.838/0001-08",
+      "Nome": "HOSPITAL DE REFERENCIA ESTADUAL DE ALTA COMPLEXIDADE DR. CARLOS MACIEIRA",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "05.812.028/0001-47",
+      "Nome": "HOSPITAL DR ADELSON DE SOUZA LOPES",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "03.810.950/0001-70",
+      "Nome": "MATERNIDADE BENEDITO LEITE",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "30.020.642/0001-13",
+      "Nome": "NUCLEO DE ASSISTENCIA DOS SERVIDORES PUBLICOS DO ESTADO DO MARANHAO",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "23.948.156/0001-02",
+      "Nome": "OITAVA DELEGACIA REGIONAL DE ZE DOCA - MA",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "37.961.796/0001-59",
+      "Nome": "PERICIA OFICIAL DE NATUREZA CRIMINAL",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "24.072.503/0001-30",
+      "Nome": "PRIMEIRA DELEGACIA REGIONAL DE ROSARIO-MA",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "39.736.013/0001-69",
+      "Nome": "PRIMEIRO BATALHAO DE BOMBEIROS MILITAR",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "23.799.694/0001-74",
+      "Nome": "QUARTA DELEGACIA REGIONAL DE CODO - MA",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "06.067.839/0001-23",
+      "Nome": "REPRESENTACAO DO I N P M NO ESTADO DO MARANHAO",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "09.556.140/0001-15",
+      "Nome": "SECRETARIA DE ESTADO  DE DIREITOS HUMANOS E PARTICIPACAO POPULAR-SEDIHPOP.",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "15.553.806/0001-84",
+      "Nome": "SECRETARIA DE ESTADO DA ADMINISTRACAO",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
       ]
     },
     {
@@ -29768,67 +31779,195 @@ const INITIAL_DATA = {
       ]
     },
     {
-      "CNPJ": "57.813.837/0001-77",
-      "Nome": "AGENCIA DE DESENVOLVIMENTO DO ESTADO DO MARANHAO S/A - INVESTE MARANHAO",
-      "Tipo": "Indireta",
+      "CNPJ": "21.681.460/0001-00",
+      "Nome": "SECRETARIA DE ESTADO DA AGRICULTURA FAMILIAR - SAF",
+      "Tipo": "Direta",
       "codes": [
         "1.5"
       ]
     },
     {
-      "CNPJ": "08.593.102/0001-70",
-      "Nome": "AGENCIA ESTADUAL DE PESQUISA AGROPECUARIA E EXTENSAO RURAL DO MARANHAO - AGERP / MA",
-      "Tipo": "Indireta",
+      "CNPJ": "05.572.043/0001-65",
+      "Nome": "SECRETARIA DE ESTADO DA CIENCIA, TECNOLOGIA E INOVACAO - SECTI",
+      "Tipo": "Direta",
       "codes": [
         "1.5"
       ]
     },
     {
-      "CNPJ": "60.794.030/0001-49",
-      "Nome": "AGENCIA EXECUTIVA METROPOLITANA DO LESTE MARANHENSE - AGEMLESTE",
-      "Tipo": "Indireta",
+      "CNPJ": "05.508.362/0001-01",
+      "Nome": "SECRETARIA DE ESTADO DA CULTURA - SECMA",
+      "Tipo": "Direta",
       "codes": [
         "1.5"
       ]
     },
     {
-      "CNPJ": "06.274.757/0001-50",
-      "Nome": "COMPANHIA DE SANEAMENTO AMBIENTAL DO MARANHAO-CAEMA",
-      "Tipo": "Indireta",
+      "CNPJ": "05.541.216/0001-88",
+      "Nome": "SECRETARIA DE ESTADO DE ARTICULACAO POLITICA - SECAP",
+      "Tipo": "Direta",
       "codes": [
         "1.5"
       ]
     },
     {
-      "CNPJ": "06.293.120/0001-00",
-      "Nome": "DEPARTAMENTO ESTADUAL DE TRANSITO",
-      "Tipo": "Indireta",
+      "CNPJ": "05.032.043/0001-72",
+      "Nome": "SECRETARIA DE ESTADO DE INDUSTRIA E COMERCIO",
+      "Tipo": "Direta",
       "codes": [
         "1.5"
       ]
     },
     {
-      "CNPJ": "18.519.709/0001-63",
-      "Nome": "EMPRESA MARANHENSE DE SERVICOS HOSPITALARES - EMSERH",
-      "Tipo": "Indireta",
+      "CNPJ": "05.997.006/0001-07",
+      "Nome": "SECRETARIA DE ESTADO DE SOLIDERIEDADE HUMANA ESCRITORIO DO LESTE MARANHENSE",
+      "Tipo": "Direta",
       "codes": [
         "1.5"
       ]
     },
     {
-      "CNPJ": "05.632.559/0001-58",
-      "Nome": "FUNDACAO DE ATENDIMENTO SOCIEDUCATIVO DO MARANHAO - FASE/MA",
-      "Tipo": "Indireta",
+      "CNPJ": "23.850.243/0001-14",
+      "Nome": "SEGUNDA DELEGACIA REGIONAL DE ITAPECURU MIRIM - MA",
+      "Tipo": "Direta",
       "codes": [
         "1.5"
       ]
     },
     {
-      "CNPJ": "97.357.420/0001-61",
-      "Nome": "FUNDACAO NICE LOBAO",
-      "Tipo": "Indireta",
+      "CNPJ": "42.162.979/0001-44",
+      "Nome": "SEGUNDO BATALHAO DE BOMBEIROS MILITAR",
+      "Tipo": "Direta",
       "codes": [
         "1.5"
+      ]
+    },
+    {
+      "CNPJ": "27.073.538/0001-82",
+      "Nome": "SUPERINTENDENCIA DE POLICIA CIVIL DA CAPITAL - MA",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "26.914.963/0001-94",
+      "Nome": "SUPERINTENDENCIA DE POLICIA CIVIL DO INTERIOR - MA",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "26.852.091/0001-87",
+      "Nome": "SUPERINTENDENCIA DE POLICIA TECNICO-CIENTIFICA - MA",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "23.764.655/0001-31",
+      "Nome": "SUPERINTENDENCIA ESTADUAL DE INVESTIGACAO DE HOMICIDIOS E PROTECAO A PESSOA",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "26.481.786/0001-08",
+      "Nome": "SUPERINTENDENCIA ESTADUAL DE REPRESSAO AO NARCOTRAFICO - SENARC - MA",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "23.830.107/0001-62",
+      "Nome": "TERCEIRA DELEGACIA REGIONAL DE CHAPADINHA - MA",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "22.503.819/0001-04",
+      "Nome": "UNIDADE ESCOLAR JOAO SOBREIRA DE LIMA",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "06.084.789/0001-92",
+      "Nome": "VIGESIMO SEXTO BATALHAO DE POLICIA MILITAR",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
+      ]
+    },
+    {
+      "CNPJ": "05.057.657/0001-09",
+      "Nome": "AGENCIA ESTADUAL DE DEFESA AGROPECUARIA DO MARANHAO",
+      "Tipo": "Indireta",
+      "codes": [
+        "1.1"
+      ]
+    },
+    {
+      "CNPJ": "08.578.592/0001-35",
+      "Nome": "AGENCIA ESTADUAL DE MOBILIDADE URBANA E SERVICOS PUBLICOS - MOB",
+      "Tipo": "Indireta",
+      "codes": [
+        "1.1"
+      ]
+    },
+    {
+      "CNPJ": "54.357.698/0001-26",
+      "Nome": "AGENCIA ESTADUAL DE TECNOLOGIA DA INFORMACAO - ATI/MA",
+      "Tipo": "Indireta",
+      "codes": [
+        "1.1"
+      ]
+    },
+    {
+      "CNPJ": "29.180.696/0001-67",
+      "Nome": "AGENCIA EXECUTIVA METROPOLITANA DO SUDOESTE MARANHENSE - AGEMSUL",
+      "Tipo": "Indireta",
+      "codes": [
+        "1.1"
+      ]
+    },
+    {
+      "CNPJ": "05.694.533/0001-34",
+      "Nome": "AGENCIA REGULADORA DE SERVICOS PUBLICOS DO MARANHAO",
+      "Tipo": "Indireta",
+      "codes": [
+        "1.1"
+      ]
+    },
+    {
+      "CNPJ": "57.940.134/0001-00",
+      "Nome": "COMPANHIA ADMINISTRADORA DA ZONA DE PROCESSAMENTO DE EXPORTACAO DE BACABEIRA S. A. - ZPE MARANHAO",
+      "Tipo": "Indireta",
+      "codes": [
+        "1.1"
+      ]
+    },
+    {
+      "CNPJ": "69.382.307/0001-09",
+      "Nome": "FUND CULT ASSIST E ECOLOGICA O HOMEM E A NATUREZA",
+      "Tipo": "Indireta",
+      "codes": [
+        "1.1"
+      ]
+    },
+    {
+      "CNPJ": "07.450.928/0001-17",
+      "Nome": "FUNDO ESTADUAL DE PROTECAO E DEFESA DOS DIREITOS DO CONSUMIDOR - PROCON",
+      "Tipo": "Indireta",
+      "codes": [
+        "1.1"
       ]
     },
     {
@@ -29848,32 +31987,8 @@ const INITIAL_DATA = {
       ]
     },
     {
-      "CNPJ": "08.597.004/0001-00",
-      "Nome": "INSTITUTO MARANHENSE DE ESTUDOS SOCIOECONOMICO E CARTOGRAFICO - IMESC",
-      "Tipo": "Indireta",
-      "codes": [
-        "1.5"
-      ]
-    },
-    {
-      "CNPJ": "05.289.160/0001-16",
-      "Nome": "JUNTA COMERCIAL DO ESTADO DO MARANHAO",
-      "Tipo": "Indireta",
-      "codes": [
-        "1.5"
-      ]
-    },
-    {
       "CNPJ": "06.281.794/0001-95",
       "Nome": "MARANHAO PARCERIAS S.A",
-      "Tipo": "Indireta",
-      "codes": [
-        "1.5"
-      ]
-    },
-    {
-      "CNPJ": "06.048.904/0001-73",
-      "Nome": "MUNICIPIO DE SAO LUIS - ESCRITORIO TECNICO DE ADMINISTRACAO MUNICIPAL",
       "Tipo": "Indireta",
       "codes": [
         "1.5"
