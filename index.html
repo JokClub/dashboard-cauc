@@ -703,7 +703,7 @@ body{
       </div>
     </div>
     <div class="header-right">
-      <span class="badge" id="dataLabel">📅 01/10/2026</span>
+      <span class="badge" id="dataLabel">📅 06/10/2026</span>
       <span class="badge live">Dados carregados</span>
     </div>
   </div>
@@ -719,7 +719,7 @@ body{
         <div class="upload-zone-hint">Arraste o CSV do dia aqui para substituir os dados visualizados</div>
       </div>
     </div>
-    <div class="file-info" id="fileInfo">Snapshot: 01/10/2026 · 272 órgãos</div>
+    <div class="file-info" id="fileInfo">Snapshot: 06/10/2026 · 272 órgãos</div>
     <div class="actions-bar">
       <button class="btn btn-publish" id="btnPublish" title="Gerar HTML pronto para publicar no GitHub">🚀 Publicar atualização</button>
       <button class="btn btn-secondary" id="btnXlsx">⬇️ Excel</button>
@@ -749,7 +749,7 @@ body{
       </div>
       <div class="estado-status">
         <div class="estado-pendencias-count">
-          <div class="estado-pendencias-numero" id="estadoPendNum">2</div>
+          <div class="estado-pendencias-numero" id="estadoPendNum">3</div>
           <div class="estado-pendencias-label">Pendências</div>
         </div>
         <span class="estado-status-badge warn" id="estadoStatusBadge">⚠️ A Comprovar</span>
@@ -758,6 +758,11 @@ body{
     <div class="estado-banner-body" id="estadoBannerBody" style="display: block;">
       <div class="estado-banner-body-title">Itens com pendência documental</div>
       <div class="estado-pendencias-list" id="estadoPendList">
+      <div class="estado-pendencia-item">
+        <span class="estado-pendencia-codigo">1.5</span>
+        <span class="estado-pendencia-desc">Regularidade perante o Poder Público Federal</span>
+      </div>
+    
       <div class="estado-pendencia-item">
         <span class="estado-pendencia-codigo">2.1.1</span>
         <span class="estado-pendencia-desc">Prestação de Contas de Recursos Federais - SIAFI/Subsistema Transferências</span>
@@ -774,7 +779,7 @@ body{
 
   <div class="update-banner" id="updateBanner">
     <span>🔄</span>
-    <span id="updateBannerText">Dashboard atualizado com "Situação dos Órgãos e Entidades do Ente Federativo - Maranhão - 01-10-2026.csv" (01/10/2026)</span>
+    <span id="updateBannerText">Dashboard atualizado com "Situação dos Órgãos e Entidades do Ente Federativo - Maranhão - 06-10-2026.csv" (06/10/2026)</span>
     <button class="update-banner-close" id="updateBannerClose">✕</button>
   </div>
 
@@ -796,9 +801,9 @@ body{
         <span class="kpi-label">Regularidade "A Comprovar"</span>
         <span class="kpi-icon">⚠️</span>
       </div>
-      <div class="kpi-value" id="kpiAComprovar">28</div>
+      <div class="kpi-value" id="kpiAComprovar">29</div>
       <div class="kpi-meta">
-        <span class="kpi-pct warn" id="kpiAComprovarPct">10.3%</span> do total
+        <span class="kpi-pct warn" id="kpiAComprovarPct">10.7%</span> do total
       </div>
     </div>
 
@@ -807,7 +812,7 @@ body{
         <span class="kpi-label">Pendências (itens)</span>
         <span class="kpi-icon">🚨</span>
       </div>
-      <div class="kpi-value" id="kpiPendencias">43</div>
+      <div class="kpi-value" id="kpiPendencias">44</div>
       <div class="kpi-meta">
         <span id="kpiMediaPorOrgao">1.5</span> por órgão (média)
       </div>
@@ -818,9 +823,9 @@ body{
         <span class="kpi-label">Comprovados</span>
         <span class="kpi-icon">✅</span>
       </div>
-      <div class="kpi-value" id="kpiComprovados">212</div>
+      <div class="kpi-value" id="kpiComprovados">211</div>
       <div class="kpi-meta">
-        <span class="kpi-pct success" id="kpiComprovadosPct">77.9%</span> do total
+        <span class="kpi-pct success" id="kpiComprovadosPct">77.6%</span> do total
       </div>
     </div>
 
@@ -860,7 +865,7 @@ body{
     <div class="code-row">
       <span class="code-tag">1.5</span>
       <span class="code-desc" title="Regularidade perante o Poder Público Federal">Regularidade perante o Poder Público Federal</span>
-      <span class="code-count">15</span>
+      <span class="code-count">16</span>
     </div>
   
     <div class="code-row">
@@ -1256,16 +1261,16 @@ var o=[];var l=Array.isArray(e);for(f=n.s.c;f<=n.e.c;++f)s[f]=ya(f);for(var c=n.
 <script>
 /* === DADOS INICIAIS EMBUTIDOS DO RELATÓRIO === */
 const INITIAL_DATA = {
-  "dataPesquisa": "01/10/2026",
+  "dataPesquisa": "06/10/2026",
   "totals": {
     "total": 272,
     "direta": 204,
     "indireta": 36,
-    "aComprovar": 28,
-    "aComprovarPct": 10.3,
-    "comprovados": 212,
-    "comprovadosPct": 77.9,
-    "pendencias": 43,
+    "aComprovar": 29,
+    "aComprovarPct": 10.7,
+    "comprovados": 211,
+    "comprovadosPct": 77.6,
+    "pendencias": 44,
     "mediaPorOrgao": 1.5,
     "codigosUnicos": 6
   },
@@ -1276,6 +1281,13 @@ const INITIAL_DATA = {
       "Tipo de Administração": "Direta",
       "Código": "3.2.3",
       "Descrição": "RREO — Anexo 8 ao Siope"
+    },
+    {
+      "CNPJ": "02.973.240/0001-06",
+      "Nome": "ESTADO DO MARANHAO - SECRETARIA DE ESTADO DA SAUDE",
+      "Tipo de Administração": "Direta",
+      "Código": "1.5",
+      "Descrição": "Regularidade perante o Poder Público Federal"
     },
     {
       "CNPJ": "02.940.097/0001-48",
@@ -1574,9 +1586,9 @@ const INITIAL_DATA = {
   ],
   "codeCounts": {
     "3.2.3": 1,
+    "1.5": 16,
     "2.1.1": 1,
     "1.1": 22,
-    "1.5": 15,
     "1.2": 2,
     "1.4": 2
   },
@@ -1706,6 +1718,14 @@ const INITIAL_DATA = {
       "Tipo": "Direta",
       "codes": [
         "3.2.3"
+      ]
+    },
+    {
+      "CNPJ": "02.973.240/0001-06",
+      "Nome": "ESTADO DO MARANHAO - SECRETARIA DE ESTADO DA SAUDE",
+      "Tipo": "Direta",
+      "codes": [
+        "1.5"
       ]
     },
     {
