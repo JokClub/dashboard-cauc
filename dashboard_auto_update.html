@@ -263,6 +263,30 @@ body{
 .ranking-tipo.Direta{background:#dbeafe;color:#1d4ed8}
 .ranking-tipo.Indireta{background:#fce7f3;color:#be185d}
 
+/* ===== Quadro: Secretarias DIRETAS com pendências ===== */
+.diretas-section{margin-bottom:24px}
+.diretas-table{display:flex;flex-direction:column;gap:8px;max-height:440px;overflow:auto}
+.direta-row{
+  display:flex;gap:14px;align-items:flex-start;padding:12px 14px;
+  border:1px solid var(--border);border-radius:10px;background:var(--surface-2);
+}
+.direta-row:hover{background:#fff;border-color:#cbd5e1}
+.direta-count{
+  min-width:46px;height:46px;border-radius:10px;background:#fef2f2;color:#b91c1c;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:19px;border:1px solid #fecaca;flex-shrink:0;
+}
+.direta-info{flex:1;min-width:0}
+.direta-nome{font-weight:700;font-size:13.5px;color:var(--text)}
+.direta-cnpj{font-size:11.5px;color:var(--text-muted);margin-top:2px}
+.direta-codes{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.direta-chip{
+  background:#fff;border:1px solid #fed7aa;color:#c2410c;border-radius:6px;
+  padding:3px 9px;font-size:11px;font-weight:700;line-height:1.35;
+}
+.direta-chip small{display:block;font-weight:500;color:#9a3412;font-size:10px}
+.direta-empty{padding:26px;text-align:center;color:var(--text-muted);font-size:13px}
+
 /* Code list */
 .code-list{
   margin-top:16px;display:flex;flex-direction:column;gap:6px;
@@ -827,6 +851,18 @@ body{
     </div>
   </div>
 
+  <!-- Quadro: Secretarias da Administração Direta com pendências -->
+  <div class="section diretas-section" id="diretasSection">
+    <div class="section-header">
+      <div class="section-title">
+        <span class="icon">🏛️</span>
+        Secretarias da Administração Direta com Pendências
+      </div>
+      <span class="section-hint" id="diretasHint">0 secretaria(s)</span>
+    </div>
+    <div class="diretas-table" id="diretasTable"></div>
+  </div>
+
   <!-- Chart + Ranking -->
   <div class="dashboard-grid">
 
@@ -869,7 +905,7 @@ body{
     <div class="modal-body">
       <div class="modal-success">
         <span style="font-size:20px">✅</span>
-        <span>Arquivo <strong>index.html</strong> baixado com sucesso! Siga os passos abaixo para publicar no seu site público.</span>
+        <span>Arquivos <strong>index.html</strong> e <strong>dados-cauc.csv</strong> baixados com sucesso! Suba os DOIS na raiz do repositório — o <strong>dados-cauc.csv</strong> é o que atualiza o dashboard automaticamente para todas as pessoas.</span>
       </div>
 
       <div class="modal-repo-input">
@@ -880,8 +916,8 @@ body{
       <div class="modal-step">
         <div class="modal-step-num">1</div>
         <div class="modal-step-text">
-          <div class="modal-step-title">Localize o arquivo baixado</div>
-          <div class="modal-step-desc">Veja o <code>index.html</code> na sua pasta de Downloads. <strong>Não renomeie</strong> — deve ser exatamente <code>index.html</code>.</div>
+          <div class="modal-step-title">Localize os 2 arquivos baixados</div>
+          <div class="modal-step-desc">Na pasta de Downloads estarão <code>index.html</code> e <code>dados-cauc.csv</code>. <strong>Não renomeie</strong> — os nomes devem ser exatamente esses.</div>
         </div>
       </div>
 
@@ -1120,6 +1156,7 @@ function parseCsv(text, name) {
   };
 
   // Update state
+  state.rawCsv = text; // guarda o CSV bruto para gerar o dados-cauc.csv no publish
   state.dataPesquisa = dataPesquisa || '—';
   state.totals = totals;
   state.pendencias = pendencias;
@@ -1153,6 +1190,7 @@ function renderAll() {
   $('#kpiCodigos').textContent = state.totals.codigosUnicos;
 
   renderEstadoBanner();
+  renderDiretas();
   renderChart();
   renderRanking();
 }
@@ -1331,6 +1369,48 @@ function renderRanking() {
   }).join('');
 }
 
+/* ===== Quadro: Secretarias DIRETAS ===== */
+function buildDiretas(pendencias){
+  // Ente raiz (ex.: "ESTADO DO MARANHAO", sem hífen) tem banner próprio —
+  // o quadro lista as DEMAIS unidades da Administração Direta.
+  const reRaiz = /^\s*ESTADO\s+(DE|DO|DA)\s+[^-]+$/i;
+  const groups = {};
+  pendencias.forEach(p => {
+    if (p['Tipo de Administração'] !== 'Direta') return;
+    if (reRaiz.test(p.Nome || '')) return;
+    if (!groups[p.CNPJ]) groups[p.CNPJ] = { CNPJ: p.CNPJ, Nome: p.Nome, pends: [] };
+    groups[p.CNPJ].pends.push({ 'Código': p['Código'], 'Descrição': p['Descrição'] });
+  });
+  return Object.values(groups)
+    .map(g => ({ ...g, pends: g.pends.sort((a,b) => naturalSort(a['Código'], b['Código'])) }))
+    .sort((a,b) => b.pends.length - a.pends.length || a.Nome.localeCompare(b.Nome));
+}
+
+function renderDiretas(){
+  const diretas = buildDiretas(state.pendencias);
+  $('#diretasHint').textContent = `${diretas.length} secretaria(s) com pendência`;
+  const el = $('#diretasTable');
+  if (!diretas.length) {
+    el.innerHTML = '<div class="direta-empty">🎉 Nenhuma secretaria da Administração Direta com pendências.</div>';
+    return;
+  }
+  el.innerHTML = diretas.map(g => `
+    <div class="direta-row">
+      <div class="direta-count">${g.pends.length}</div>
+      <div class="direta-info">
+        <div class="direta-nome">${escape(g.Nome)}</div>
+        <div class="direta-cnpj">CNPJ: ${escape(g.CNPJ)} · Administração Direta</div>
+        <div class="direta-codes">
+          ${g.pends.map(p => {
+            const d = p['Descrição'] || '';
+            return `<span class="direta-chip" title="${escape(d)}">Cód. ${escape(p['Código'])}<small>${escape(d.length > 62 ? d.slice(0,62) + '…' : d)}</small></span>`;
+          }).join('')}
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
 /* ===== Banner close ===== */
 $('#updateBannerClose').addEventListener('click', () => {
   $('#updateBanner').classList.add('hidden');
@@ -1424,6 +1504,19 @@ function generateUpdatedHtml() {
     document.body.removeChild(a);
     setTimeout(() => URL.revokeObjectURL(url), 1000);
 
+    // Baixa também o dados-cauc.csv (fonte de atualização automática de todos)
+    if (state.rawCsv) {
+      const blob2 = new Blob([state.rawCsv], { type: 'text/csv;charset=utf-8' });
+      const url2 = URL.createObjectURL(blob2);
+      const a2 = document.createElement('a');
+      a2.href = url2;
+      a2.download = 'dados-cauc.csv';
+      document.body.appendChild(a2);
+      a2.click();
+      document.body.removeChild(a2);
+      setTimeout(() => URL.revokeObjectURL(url2), 1000);
+    }
+
     // Mostra modal com instruções
     showPublishModal();
   } catch (err) {
@@ -1455,10 +1548,37 @@ $('#modalOpenRepo').addEventListener('click', () => {
   window.open(uploadUrl, '_blank');
 });
 
+/* ===== Atualização automática COMPARTILHADA =====
+   O dashboard hospedado busca o arquivo dados-cauc.csv (publicado junto no
+   repositório). Quem substituir esse arquivo atualiza TODAS as telas abertas,
+   sem ninguém precisar fazer nada. Funciona apenas quando a página está
+   hospedada (http/https) — abrindo via file:// usa o snapshot embutido. */
+const DATA_SOURCE_URL = 'dados-cauc.csv';
+const REFRESH_INTERVAL_MS = 10 * 60 * 1000; // verifica a cada 10 minutos
+let lastRemoteText = null;
+
+async function fetchSharedCsv(silent = true){
+  if (!/^https?:$/.test(location.protocol)) return; // não hospedado
+  try {
+    const res = await fetch(DATA_SOURCE_URL + '?t=' + Date.now(), { cache: 'no-store' });
+    if (!res.ok) return;
+    const text = await res.text();
+    if (text === lastRemoteText) return; // nada mudou
+    lastRemoteText = text;
+    const m = text.match(/Data da Pesquisa:\s*(\d{2}\/\d{2}\/\d{4})/);
+    const remoteDate = m ? m[1] : '';
+    if (remoteDate && remoteDate === state.dataPesquisa) return; // já está na versão atual
+    parseCsv(text, DATA_SOURCE_URL + ' (remoto)');
+    if (!silent) showToast('🔄 Atualização automática aplicada (' + remoteDate + ')', 'success');
+  } catch (e) { /* sem CSV compartilhado: mantém snapshot embutido */ }
+}
+document.addEventListener('visibilitychange', () => { if (!document.hidden) fetchSharedCsv(); });
+setInterval(fetchSharedCsv, REFRESH_INTERVAL_MS);
+
 /* Initial render with embedded snapshot */
+if (location.protocol.startsWith('http')) fetchSharedCsv();
 renderAll();
 </script>
 
-<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","spa":2}' crossorigin="anonymous"></script>
 </body>
 </html>
