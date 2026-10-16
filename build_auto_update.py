@@ -126,14 +126,12 @@ estado_data = {
     'codigos':           estado_codigos,
 }
 
-# === QUADRO DIRETAS (específico) — secretarias estaduais com pendência ===
+# === QUADRO DIRETAS (TODOS os órgãos diretos com pendência, exceto o ente raiz) ===
 _diretas_groups = {}
 for _p in pendencias:
     if _p.get('Tipo de Administração') != 'Direta': continue
-    _nome = _p.get('Nome', '')
-    if not RE_SECRETARIA.search(_nome): continue
+    _nome = (_p.get('Nome') or '').strip()
     if RE_DIRETA_RAIZ.match(_nome): continue
-    if RE_UNIDADE_OP.search(_nome): continue
     _c = _p['CNPJ']
     if _c not in _diretas_groups:
         _diretas_groups[_c] = {'CNPJ': _c, 'Nome': _p['Nome'], 'pends': []}

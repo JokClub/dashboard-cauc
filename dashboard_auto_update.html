@@ -893,17 +893,7 @@ body{
       <div class="diretas-table" id="diretasTable"></div>
     </div>
 
-    <!-- Quadro: Demais Entidades da Administração Direta com Pendências -->
-    <div class="section indiretas-section" id="indiretasSection">
-      <div class="section-header">
-        <div class="section-title">
-          <span class="icon">🏛️</span>
-          Demais Entidades da Administração Direta com Pendências
-        </div>
-        <span class="section-hint" id="indiretasHint">0 entidade(s)</span>
-      </div>
-      <div class="indiretas-table" id="indiretasTable"></div>
-    </div>
+    <!-- (Quadro "Demais Entidades Diretas" removido: o quadro superior agora lista TODOS os órgãos diretos) -->
 
     <!-- Chart + Ranking -->
   <div class="dashboard-grid">
@@ -1233,7 +1223,7 @@ function renderAll() {
 
   renderEstadoBanner();
   renderDiretas();
-  renderIndiretas();
+  // renderIndiretas removido em v5: o quadro DIRETAS superior agora mostra TODOS os Diretos.
   renderChart();
   renderRanking();
 }
@@ -1412,64 +1402,21 @@ function renderRanking() {
   }).join('');
 }
 
-/* ===== Quadro: Demais Entidades DIRETAS (não-secretarias) ===== */
-function buildIndiretas(pendencias){
-  // Filtra órgãos DIRETOS que NÃO são o ente raiz e NÃO são secretarias estaduais
-  // (estas já aparecem no quadro "Secretarias DIRETAS" acima). Inclui unidades
-  // operacionais como UNIDADE MISTA, BATALHAO etc.
-  const groups = {};
-  pendencias.forEach(p => {
-    if (p['Tipo de Administração'] !== 'Direta') return;
-    if (!RE_RAIZ_ENTE.test(p.Nome || '')) {
-      if (RE_SECRETARIA.test(p.Nome || '')) return; // já está no quadro superior
-    }
-    if (!groups[p.CNPJ]) groups[p.CNPJ] = { CNPJ: p.CNPJ, Nome: p.Nome, pends: [] };
-    groups[p.CNPJ].pends.push({ 'Código': p['Código'], 'Descrição': p['Descrição'] });
-  });
-  return Object.values(groups)
-    .map(g => ({ ...g, pends: g.pends.sort((a,b) => naturalSort(a['Código'], b['Código'])) }))
-    .sort((a,b) => b.pends.length - a.pends.length || a.Nome.localeCompare(b.Nome));
-}
-
-function renderIndiretas(){
-  const indiretas = buildIndiretas(state.pendencias);
-  $('#indiretasHint').textContent = `${indiretas.length} entidade(s) com pendência`;
-  const el = $('#indiretasTable');
-  if (!indiretas.length) {
-    el.innerHTML = '<div class="indireta-empty">🎉 Nenhuma outra entidade da Administração Direta com pendências.</div>';
-    return;
-  }
-  el.innerHTML = indiretas.map(g => `
-    <div class="indireta-row">
-      <div class="indireta-count">${g.pends.length}</div>
-      <div class="indireta-info">
-        <div class="indireta-nome">${escape(g.Nome)}</div>
-        <div class="indireta-cnpj">CNPJ: ${escape(g.CNPJ)} · Administração Direta</div>
-        <div class="indireta-codes">
-          ${g.pends.map(p => {
-            const d = p['Descrição'] || '';
-            return `<span class="indireta-chip" title="${escape(d)}">Cód. ${escape(p['Código'])}<small>${escape(d.length > 62 ? d.slice(0,62) + '…' : d)}</small></span>`;
-          }).join('')}
-        </div>
-      </div>
-    </div>
-  `).join('');
-}
-
+/* (buildIndiretas / renderIndiretas removidos em v5 — quadro DIRETAS consolida todos os Diretos) */
 /* ===== Quadro: Secretarias DIRETAS ===== */
 const RE_RAIZ_ENTE   = /^\s*ESTADO\s+(DE|DO|DA)\s+[^-]+$/i;
 const RE_SECRETARIA  = /SECRETARIA/i;
 const RE_UNIDADE_OP  = /\bUNIDADE\s+MISTA\b|\bBATALHAO\b|\bCOMPANHIA\b/i;
 
 function buildDiretas(pendencias){
-  // Quadro dedicado às SECRETARIAS da Administração Direta com pendências.
-  // Exclui: ente raiz (banner próprio) e unidades operacionais (Batalhão, Unidade Mista, etc.)
+  // CORREÇÃO (16/10/2026): exibe TODOS os órgãos da Administração Direta com pendência,
+  // EXCETO o ente raiz (ESTADO DO MARANHAO, CNPJ 06.354.468/0001-60).
+  // O filtro antigo exigia "SECRETARIA" no nome e excluía BATALHAO/FUNDO/PERICIA,
+  // o que fazia 17 órgãos Diretos aparecerem como apenas 4 no dashboard.
   const groups = {};
   pendencias.forEach(p => {
     if (p['Tipo de Administração'] !== 'Direta') return;
-    if (!RE_SECRETARIA.test(p.Nome || '')) return;
-    if (RE_RAIZ_ENTE.test(p.Nome || '')) return;
-    if (RE_UNIDADE_OP.test(p.Nome || '')) return;
+    if (RE_RAIZ_ENTE.test((p.Nome || '').trim())) return;
     if (!groups[p.CNPJ]) groups[p.CNPJ] = { CNPJ: p.CNPJ, Nome: p.Nome, pends: [] };
     groups[p.CNPJ].pends.push({ 'Código': p['Código'], 'Descrição': p['Descrição'] });
   });
@@ -1480,10 +1427,10 @@ function buildDiretas(pendencias){
 
 function renderDiretas(){
   const diretas = buildDiretas(state.pendencias);
-  $('#diretasHint').textContent = `${diretas.length} secretaria(s) com pendência`;
+  $('#diretasHint').textContent = `${diretas.length} órgão(s) da Administração Direta com pendência`;
   const el = $('#diretasTable');
   if (!diretas.length) {
-    el.innerHTML = '<div class="direta-empty">🎉 Nenhuma secretaria da Administração Direta com pendências.</div>';
+    el.innerHTML = '<div class="direta-empty">🎉 Nenhum órgão da Administração Direta com pendências.</div>';
     return;
   }
   el.innerHTML = diretas.map(g => `
