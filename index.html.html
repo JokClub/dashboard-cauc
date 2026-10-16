@@ -493,4 +493,252 @@
     function recalcularMetricas() {
       const total = globalRows.length;
       const diretas = globalRows.filter(r => r['Tipo de Administração'] === 'Direta');
-      const indiretas = globalRows.
+      const indiretas = globalRows.filter(r => r['Tipo de Administração'] === 'Indireta');
+      
+      const pendentes = globalRows.filter(r => r['Regularidade Fiscal'] === 'A Comprovar');
+      const regulares = globalRows.filter(r => r['Regularidade Fiscal'] === 'Comprovados');
+
+      // PENDÊNCIAS DA ADMINISTRAÇÃO DIRETA: soma todas as pendências dos órgãos diretos (Exato: 17)
+      const diretasComPendencia = diretas.filter(r => r['Regularidade Fiscal'] === 'A Comprovar');
+      let totalPendsDireta = 0;
+      diretasComPendencia.forEach(r => totalPendsDireta += r._pendencias.length);
+
+      // Atualiza o banner do Estado do Maranhão
+      document.getElementById('bannerDiretaCount').textContent = totalPendsDireta;
+
+      // KPIs
+      document.getElementById('kpiTotal').textContent = total;
+      document.getElementById('kpiAComprovar').textContent = pendentes.length;
+      document.getElementById('kpiAComprovarPct').textContent = ((pendentes.length / total) * 100).toFixed(1) + '%';
+      document.getElementById('kpiComprovados').textContent = regulares.length;
+      document.getElementById('kpiComprovadosPct').textContent = ((regulares.length / total) * 100).toFixed(1) + '%';
+
+      let totalPends = 0;
+      const codeCounts = {};
+      pendentes.forEach(r => {
+        r._pendencias.forEach(cod => {
+          totalPends++;
+          codeCounts[cod] = (codeCounts[cod] || 0) + 1;
+        });
+      });
+
+      document.getElementById('kpiPendencias').textContent = totalPends;
+      document.getElementById('kpiCodigos').textContent = Object.keys(codeCounts).length;
+
+      // Contadores das Abas
+      document.getElementById('countTabTodos').textContent = total;
+      document.getElementById('countTabDireta').textContent = diretas.length;
+      document.getElementById('countTabIndireta').textContent = indiretas.length;
+      document.getElementById('countTabPendentes').textContent = pendentes.length;
+      document.getElementById('countTabRegulares').textContent = regulares.length;
+
+      renderCharts(codeCounts, diretasComPendencia.length, pendentes.length - diretasComPendencia.length);
+    }
+
+    function renderCharts(codeCounts, totalDiretaPends, totalIndiretaPends) {
+      // Gráfico de Barras - Códigos
+      const sortedCodes = Object.entries(codeCounts).sort((a,b) => b[1] - a[1]);
+      const labels = sortedCodes.map(s => `Item ${s[0]}`);
+      const values = sortedCodes.map(s => s[1]);
+
+      if (chartCodigosInstance) chartCodigosInstance.destroy();
+      const ctxBar = document.getElementById('chartCodigos').getContext('2d');
+      chartCodigosInstance = new Chart(ctxBar, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [{
+            data: values,
+            backgroundColor: '#3b82f6',
+            borderRadius: 6,
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: {
+            y: { beginAtZero: true, grid: { color: '#f1f5f9' }, ticks: { stepSize: 5 } },
+            x: { grid: { display: false } }
+          }
+        }
+      });
+
+      // Gráfico de Donut - Direta vs Indireta
+      if (chartTipoInstance) chartTipoInstance.destroy();
+      const ctxPie = document.getElementById('chartTipo').getContext('2d');
+      chartTipoInstance = new Chart(ctxPie, {
+        type: 'doughnut',
+        data: {
+          labels: ['Adm. Direta', 'Adm. Indireta'],
+          datasets: [{
+            data: [totalDiretaPends, totalIndiretaPends],
+            backgroundColor: ['#f59e0b', '#8b5cf6'],
+            borderWidth: 0
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { position: 'bottom', labels: { boxWidth: 12, font: { size: 11 } } }
+          },
+          cutout: '65%'
+        }
+      });
+    }
+
+    // Filtragem e Busca
+    function filtrarAba(tipo) {
+      currentFilter = tipo;
+      document.querySelectorAll('.tab-btn').forEach(b => {
+        b.classList.remove('bg-white', 'text-slate-900', 'shadow-sm');
+        b.classList.add('text-slate-600');
+      });
+      const activeBtn = document.getElementById(`tab-${tipo}`);
+      if (activeBtn) {
+        activeBtn.classList.add('bg-white', 'text-slate-900', 'shadow-sm');
+        activeBtn.classList.remove('text-slate-600');
+      }
+      currentPage = 1;
+      aplicarFiltros();
+    }
+
+    document.getElementById('searchOrgao').addEventListener('input', (e) => {
+      searchQuery = e.target.value.toLowerCase().trim();
+      currentPage = 1;
+      aplicarFiltros();
+    });
+
+    function aplicarFiltros() {
+      filteredRows = globalRows.filter(r => {
+        if (currentFilter === 'direta' && r['Tipo de Administração'] !== 'Direta') return false;
+        if (currentFilter === 'indireta' && r['Tipo de Administração'] !== 'Indireta') return false;
+        if (currentFilter === 'pendentes' && r['Regularidade Fiscal'] !== 'A Comprovar') return false;
+        if (currentFilter === 'regulares' && r['Regularidade Fiscal'] !== 'Comprovados') return false;
+        
+        if (searchQuery) {
+          const matchNome = (r['Nome'] || '').toLowerCase().includes(searchQuery);
+          const matchCnpj = (r['CNPJ'] || '').toLowerCase().includes(searchQuery);
+          return matchNome || matchCnpj;
+        }
+        return true;
+      });
+
+      renderTabela();
+    }
+
+    function renderTabela() {
+      const tbody = document.getElementById('tabelaCorpo');
+      const start = (currentPage - 1) * pageSize;
+      const end = start + pageSize;
+      const pageRows = filteredRows.slice(start, end);
+
+      if (!pageRows.length) {
+        tbody.innerHTML = `<tr><td colspan="6" class="px-4 py-8 text-center text-slate-400">Nenhum órgão encontrado para os critérios de busca.</td></tr>`;
+        document.getElementById('paginacaoTexto').textContent = '0 resultados';
+        return;
+      }
+
+      tbody.innerHTML = pageRows.map(r => {
+        const isPend = r['Regularidade Fiscal'] === 'A Comprovar';
+        const pendChips = r._pendencias.map(c => 
+          `<span class="bg-amber-100 text-amber-800 border border-amber-200 text-[10px] px-1.5 py-0.5 rounded font-mono font-bold" title="${CODIGO_DESCRICAO[c] || ''}">Cód ${c}</span>`
+        ).join(' ');
+
+        return `
+          <tr class="hover:bg-slate-50 transition">
+            <td class="px-4 py-3">
+              <span class="font-bold text-slate-800 block text-xs">${r['Nome']}</span>
+            </td>
+            <td class="px-4 py-3 font-mono text-[11px] text-slate-500 whitespace-nowrap">
+              ${r['CNPJ']}
+              <button onclick="navigator.clipboard.writeText('${r['CNPJ']}')" class="text-slate-400 hover:text-slate-700 ml-1" title="Copiar CNPJ">
+                <i data-lucide="copy" class="w-3 h-3 inline"></i>
+              </button>
+            </td>
+            <td class="px-4 py-3 whitespace-nowrap">
+              <span class="text-[10px] px-2 py-0.5 rounded-full font-semibold ${r['Tipo de Administração'] === 'Direta' ? 'bg-blue-50 text-blue-700 border border-blue-200' : 'bg-purple-50 text-purple-700 border border-purple-200'}">
+                ${r['Tipo de Administração']}
+              </span>
+            </td>
+            <td class="px-4 py-3 whitespace-nowrap">
+              <span class="text-[10px] px-2 py-0.5 rounded-full font-bold ${isPend ? 'bg-amber-100 text-amber-800' : 'bg-emerald-100 text-emerald-800'}">
+                ${isPend ? 'A Comprovar' : 'Comprovado'}
+              </span>
+            </td>
+            <td class="px-4 py-3 text-center font-bold ${isPend ? 'text-amber-600' : 'text-slate-400'}">
+              ${r._pendencias.length}
+            </td>
+            <td class="px-4 py-3">
+              <div class="flex flex-wrap gap-1">
+                ${pendChips || '<span class="text-[11px] text-emerald-600">Nenhuma restrição</span>'}
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+
+      document.getElementById('paginacaoTexto').textContent = `Mostrando ${start + 1} a ${Math.min(end, filteredRows.length)} de ${filteredRows.length} órgãos`;
+      document.getElementById('paginacaoAtual').textContent = currentPage;
+      document.getElementById('btnPrevPage').disabled = (currentPage === 1);
+      document.getElementById('btnNextPage').disabled = (end >= filteredRows.length);
+
+      lucide.createIcons();
+    }
+
+    document.getElementById('btnPrevPage').addEventListener('click', () => { if (currentPage > 1) { currentPage--; renderTabela(); } });
+    document.getElementById('btnNextPage').addEventListener('click', () => { if ((currentPage * pageSize) < filteredRows.length) { currentPage++; renderTabela(); } });
+
+    // Download do index.html atualizado
+    document.getElementById('btnPublish').addEventListener('click', () => {
+      const fullHtml = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+      const blob = new Blob([fullHtml], { type: 'text/html;charset=utf-8' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'index.html';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    });
+
+    // Exportação Excel (.xlsx)
+    document.getElementById('btnXlsx').addEventListener('click', () => {
+      if (!globalRows.length) return alert('Nenhum dado para exportar.');
+      const wb = XLSX.utils.book_new();
+      
+      const dadosPendencias = [];
+      globalRows.filter(r => r._pendencias.length).forEach(r => {
+        r._pendencias.forEach(cod => {
+          dadosPendencias.push({
+            'CNPJ': r['CNPJ'],
+            'Órgão / Secretaria': r['Nome'],
+            'Tipo de Administração': r['Tipo de Administração'],
+            'Código CAUC': cod,
+            'Descrição do Requisito': CODIGO_DESCRICAO[cod] || ''
+          });
+        });
+      });
+
+      const ws = XLSX.utils.json_to_sheet(dadosPendencias);
+      XLSX.utils.book_append_sheet(wb, ws, 'Pendências CAUC');
+      XLSX.writeFile(wb, `CAUC_Maranhao_16-10-2026.xlsx`);
+    });
+
+    // Copiar Resumo Executivo
+    document.getElementById('btnCopySummary').addEventListener('click', () => {
+      const txt = `📊 *RESUMO DE REGULARIDADE FISCAL (CAUC) — MARANHÃO*\n` +
+                  `📅 Data: 16/10/2026\n` +
+                  `🏛️ Total de Órgãos: 272 (204 Direta, 68 Indireta)\n` +
+                  `🚨 Órgãos da Administração Direta com Pendência: 17\n` +
+                  `⚠️ Total Geral A Comprovar: 44 órgãos (16.2%)\n` +
+                  `✅ Comprovados: 196 órgãos (72.1%)\n` +
+                  `🔍 Itens mais incidentes: 1.3 FGTS (43 órgãos) e 1.5 SIAFI (10 órgãos)`;
+      navigator.clipboard.writeText(txt);
+      alert('Resumo copiado com sucesso para a área de transferência!');
+    });
+
+    document.getElementById('btnPrint').addEventListener('click', () => window.print());
+  </script>
+</body>
+</html>
