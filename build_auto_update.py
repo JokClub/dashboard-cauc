@@ -93,6 +93,9 @@ for r in a_comprovar:
 # Detectar ente federativo principal: linhas "Direta" cujo nome começa com "ESTADO "
 # (genérico - funciona para MA, SP, MG, etc.)
 ESTADO_NOME_RE = re.compile(r'^\s*ESTADO\s+(DE|DO|DA)\s+', re.IGNORECASE)
+RE_SECRETARIA = re.compile(r'SECRETARIA', re.IGNORECASE)
+RE_UNIDADE_OP = re.compile(r'\bUNIDADE\s+MISTA\b|\bBATALHAO\b|\bCOMPANHIA\b', re.IGNORECASE)
+RE_DIRETA_RAIZ = re.compile(r'^\s*ESTADO\s+(DE|DO|DA)\s+[^-]+$', re.IGNORECASE)
 estado_raiz_rows   = [r for r in rows if r.get('Tipo de Administração') == 'Direta'
                        and ESTADO_NOME_RE.match(r.get('Nome', ''))]
 estado_raiz_nomes  = sorted({rr['Nome'].strip() for rr in estado_raiz_rows}, key=len)
@@ -122,6 +125,25 @@ estado_data = {
     'qtd_pendencias':    len(estado_pendencias_full),
     'codigos':           estado_codigos,
 }
+
+# === QUADRO DIRETAS (específico) — secretarias estaduais com pendência ===
+_diretas_groups = {}
+for _p in pendencias:
+    if _p.get('Tipo de Administração') != 'Direta': continue
+    _nome = _p.get('Nome', '')
+    if not RE_SECRETARIA.search(_nome): continue
+    if RE_DIRETA_RAIZ.match(_nome): continue
+    if RE_UNIDADE_OP.search(_nome): continue
+    _c = _p['CNPJ']
+    if _c not in _diretas_groups:
+        _diretas_groups[_c] = {'CNPJ': _c, 'Nome': _p['Nome'], 'pends': []}
+    _diretas_groups[_c]['pends'].append({'Código': _p['Código'], 'Descrição': _p['Descrição']})
+SECRETARIAS_DIRETAS = sorted(
+    [{'CNPJ': g['CNPJ'], 'Nome': g['Nome'],
+      'pends': sorted(g['pends'], key=lambda x: natural_key(x['Código']))}
+     for g in _diretas_groups.values()],
+    key=lambda g: (-len(g['pends']), g['Nome'])
+)
 
 code_counts = {}
 for p in pendencias:
@@ -177,6 +199,7 @@ template = template.replace('__PENDENCIAS_JSON__', json.dumps(pendencias, ensure
 template = template.replace('__CODE_COUNTS_JSON__', json.dumps(code_counts, ensure_ascii=False))
 template = template.replace('__RANKING_JSON__', json.dumps(ranking, ensure_ascii=False))
 template = template.replace('__ESTADO_JSON__', json.dumps(estado_data, ensure_ascii=False))
+template = template.replace('__SECRETARIAS_DIRETAS_JSON__', json.dumps(SECRETARIAS_DIRETAS, ensure_ascii=False))
 
 out_path = os.path.join(WEBAPP, 'index.html')
 with open(out_path, 'w', encoding='utf-8') as f:
