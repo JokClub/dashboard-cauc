@@ -224,13 +224,13 @@
 
     <!-- Card Destaque: Ente Federativo Principal (Estado do Maranhão) -->
     <div id="estadoBanner" class="glass-card rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-lg">
-      <div class="p-5 sm:p-6 bg-gradient-to-r from-slate-900 via-slate-800 to-indigo-950 text-white flex flex-col md:flex-row md:items-center justify-between gap-5 border-b border-slate-700/60">
+      <div id="estadoBannerHeader" class="p-5 sm:p-6 bg-gradient-to-r from-red-700 via-red-800 to-rose-900 text-white flex flex-col md:flex-row md:items-center justify-between gap-5 border-b border-red-700/60">
         
         <div class="flex items-start sm:items-center gap-4">
           <div class="ma-flag flex-shrink-0 mt-1 sm:mt-0"></div>
           <div>
             <div class="flex flex-wrap items-center gap-2">
-              <span class="text-[11px] font-bold uppercase tracking-wider text-amber-400 bg-amber-400/10 px-2 py-0.5 rounded-full border border-amber-400/20">
+              <span id="estadoEntePill" class="text-[11px] font-bold uppercase tracking-wider text-red-200 bg-red-200/10 px-2 py-0.5 rounded-full border border-red-200/20">
                 Ente Federativo Central
               </span>
               <span class="text-[11px] font-medium text-slate-300">Administração Direta</span>
@@ -1286,7 +1286,7 @@
       });
     }
 
-    /* Renderização do Banner do Estado — fix v7 (17 diretas unificado) */
+    /* Renderização do Banner do Estado — fix v9 (red/green dinâmico + 17 diretas) */
     function renderEstadoBanner() {
       const RE_RAIZ_ESTADO = /^\s*ESTADO\s+(DE|DO|DA)\s+[^-]+$/i;
       const CNPJ_RAIZ_MA = '06.354.468/0001-60';
@@ -1300,27 +1300,48 @@
 
       const codigosUnicos = [...new Set(pendsEstado.map(p => p['Código']))].sort(naturalSort);
       const qtd = pendsEstado.length;
+      const hasPendencias = qtd > 0;
 
-      document.getElementById('estadoPendNum').textContent = qtd;
+      // ---- Seletores de cor ----
+      const pendNum = document.getElementById('estadoPendNum');
       const statusBadge = document.getElementById('estadoStatusBadge');
       const listEl = document.getElementById('estadoPendList');
+      const bannerHeader = document.getElementById('estadoBannerHeader');
+      const entePill = document.getElementById('estadoEntePill');
+      const fileWarningIcon = document.querySelector('#estadoPendList') // manipulação abaixo por inline style
 
-      if (qtd > 0) {
-        statusBadge.className = 'px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30 flex items-center gap-2 shadow-xs';
-        statusBadge.innerHTML = '<i data-lucide="alert-triangle" class="w-4 h-4 text-amber-400"></i><span>A Comprovar</span>';
-        
+      // Número grande do banner
+      pendNum.textContent = qtd;
+      pendNum.className = hasPendencias
+        ? 'text-2xl sm:text-3xl font-extrabold text-red-300 leading-none'
+        : 'text-2xl sm:text-3xl font-extrabold text-emerald-300 leading-none';
+
+      // Cabeçalho do banner (gradiente)
+      bannerHeader.className = hasPendencias
+        ? 'p-5 sm:p-6 bg-gradient-to-r from-red-700 via-red-800 to-rose-900 text-white flex flex-col md:flex-row md:items-center justify-between gap-5 border-b border-red-700/60'
+        : 'p-5 sm:p-6 bg-gradient-to-r from-emerald-700 via-emerald-800 to-teal-900 text-white flex flex-col md:flex-row md:items-center justify-between gap-5 border-b border-emerald-700/60';
+
+      // Pill "Ente Federativo Central"
+      entePill.className = hasPendencias
+        ? 'text-[11px] font-bold uppercase tracking-wider text-red-200 bg-red-200/10 px-2 py-0.5 rounded-full border border-red-200/20'
+        : 'text-[11px] font-bold uppercase tracking-wider text-emerald-200 bg-emerald-200/10 px-2 py-0.5 rounded-full border border-emerald-200/20';
+
+      if (hasPendencias) {
+        statusBadge.className = 'px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-red-500/20 text-red-200 border border-red-500/30 flex items-center gap-2 shadow-xs';
+        statusBadge.innerHTML = '<i data-lucide="alert-triangle" class="w-4 h-4 text-red-300"></i><span>A Comprovar</span>';
+
         listEl.innerHTML = codigosUnicos.map(cod => {
           const desc = CODIGO_DESCRICAO[cod] || 'Descrição regulamentar do CAUC';
           const affected = pendsEstado.filter(p => p['Código'] === cod);
           return `
-            <div class="p-3 bg-amber-50/70 border border-amber-200/90 rounded-xl flex items-start gap-3 transition-hover hover:bg-amber-50">
-              <span class="font-mono font-bold text-xs bg-amber-500 text-white px-2 py-1 rounded-md shrink-0 shadow-xs">
+            <div class="p-3 bg-red-50/70 border border-red-200/90 rounded-xl flex items-start gap-3 transition-hover hover:bg-red-50">
+              <span class="font-mono font-bold text-xs bg-red-600 text-white px-2 py-1 rounded-md shrink-0 shadow-xs">
                 ${escapeHtml(cod)}
               </span>
               <div class="min-w-0 flex-1">
                 <div class="text-xs font-semibold text-slate-800 leading-snug">${escapeHtml(desc)}</div>
-                <div class="text-[11px] text-amber-900/80 mt-1 flex flex-wrap gap-1">
-                  ${affected.map(a => `<span class="bg-white/80 border border-amber-200 rounded px-1.5 py-0.5 truncate max-w-xs" title="${escapeHtml(a.Nome)}">${escapeHtml(a.Nome)}</span>`).join('')}
+                <div class="text-[11px] text-red-900/80 mt-1 flex flex-wrap gap-1">
+                  ${affected.map(a => `<span class="bg-white/80 border border-red-200 rounded px-1.5 py-0.5 truncate max-w-xs" title="${escapeHtml(a.Nome)}">${escapeHtml(a.Nome)}</span>`).join('')}
                 </div>
               </div>
             </div>
@@ -1992,5 +2013,6 @@ _Fonte: Cadastro Único de Convênios (CAUC / Tesouro Nacional)_`;
       document.getElementById('btnPublish').addEventListener('click', generateUpdatedHtmlDownload);
     });
   </script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","spa":2}' crossorigin="anonymous"></script>
 </body>
 </html>
