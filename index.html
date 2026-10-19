@@ -5081,7 +5081,7 @@ lucide.createIcons({icons});\``);if(typeof d>"u")throw new Error("`createIcons()
             <span>Imprimir</span>
           </button>
 
-          <button id="btnPublish" class="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-white bg-brand-600 rounded-lg hover:bg-brand-700 transition-colors shadow-sm disabled:opacity-50 disabled:cursor-not-allowed active:scale-95" disabled title="Carregue um novo CSV para gerar e baixar a versão atualizada">
+          <button id="btnPublish" class="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-white bg-brand-600 rounded-lg hover:bg-brand-700 transition-colors shadow-sm active:scale-95" title="Baixar index.html atualizado com os dados atuais">
             <i data-lucide="rocket" class="w-3.5 h-3.5"></i>
             <span>Gerar HTML Atualizado</span>
           </button>
@@ -6779,55 +6779,167 @@ _Fonte: Cadastro Único de Convênios (CAUC / Tesouro Nacional)_`;
 
     function generateUpdatedHtmlDownload() {
       try {
+        // 1) Monta HTML a partir do proprio documento
         let html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
 
-        // Atualiza objeto INITIAL_STATE embutido
+        // 2) Substitui INITIAL_STATE pelo estado atual (dados que estao na tela agora)
         const statePayload = {
           dataPesquisa: appState.dataPesquisa,
           totals: appState.totals,
           pendencias: appState.pendencias,
           codeCounts: appState.codeCounts
         };
-
+        const safeJson = JSON.stringify(statePayload, null, 2).replace(/<\/script>/gi, '<\\/script>');
+        const newCode = 'const INITIAL_STATE = ' + safeJson + ';\n';
         const regex = /const INITIAL_STATE = \{[\s\S]*?\};\n/;
-        const newCode = 'const INITIAL_STATE = ' + JSON.stringify(statePayload, null, 2) + ';\n';
-        html = html.replace(regex, newCode);
-
-        // Download do arquivo HTML compilado
-        const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'index.html';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        setTimeout(() => URL.revokeObjectURL(url), 1000);
-
-        // Se houver CSV bruto, baixa-o como dados-cauc.csv
-        if (appState.rawCsv) {
-          const blobCsv = new Blob([appState.rawCsv], { type: 'text/csv;charset=utf-8' });
-          const urlCsv = URL.createObjectURL(blobCsv);
-          const aCsv = document.createElement('a');
-          aCsv.href = urlCsv;
-          aCsv.download = 'dados-cauc.csv';
-          document.body.appendChild(aCsv);
-          aCsv.click();
-          document.body.removeChild(aCsv);
-          setTimeout(() => URL.revokeObjectURL(urlCsv), 1000);
+        if (regex.test(html)) {
+          html = html.replace(regex, newCode);
+        } else {
+          html = html.replace('</body>', '<script>\n' + newCode + '\n</script>\n<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/vce701823e78c4301a35b7e07294d87301792088814092" integrity="sha512-UKNk8GbxkABxKcXYuLkO16EleLGUkcvJWtpSNmExE0Too3ZaFAxTscNWEc1OdAv5/BikHawapSCaiD2XCmp+Bw==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","spa":2}' crossorigin="anonymous"></script>
+</body>');
         }
 
-        const modal = document.getElementById('publishModal');
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
+        // 3) Tenta download automatico (funciona fora de iframe / sem bloqueador)
+        let downloaded = false;
+        try {
+          const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url; a.download = 'index.html'; a.style.display = 'none';
+          document.body.appendChild(a); a.click();
+          setTimeout(() => { try { document.body.removeChild(a); URL.revokeObjectURL(url); } catch(e){} }, 1500);
+          downloaded = true;
+        } catch (e) {
+          console.warn('Download automatico bloqueado, cai no modal:', e.message);
+        }
+
+        // 4) SEMPRE mostra modal com HTML completo (mesmo se download passou)
+        showPublishModal(html, downloaded);
+
+        // 5) Se houver CSV carregado na memoria, baixa tambem
+        if (appState.rawCsv) {
+          try {
+            const blobCsv = new Blob([appState.rawCsv], { type: 'text/csv;charset=utf-8' });
+            const urlCsv = URL.createObjectURL(blobCsv);
+            const aCsv = document.createElement('a');
+            aCsv.href = urlCsv; aCsv.download = 'dados-cauc.csv'; aCsv.style.display = 'none';
+            document.body.appendChild(aCsv); aCsv.click();
+            setTimeout(() => { try { document.body.removeChild(aCsv); URL.revokeObjectURL(urlCsv); } catch(e){} }, 1500);
+          } catch (e) { console.warn('Download CSV falhou:', e.message); }
+        }
+
+        // 6) Toast visual
+        const bannerEl = document.getElementById('updateBanner');
+        if (bannerEl) {
+          document.getElementById('updateBannerText').textContent =
+            'HTML atualizado (' + (appState.dataPesquisa || 'nova data') + ') — baixe e faça upload no GitHub.';
+          bannerEl.classList.remove('hidden');
+          setTimeout(() => bannerEl.classList.add('hidden'), 6000);
+        }
       } catch (err) {
         showToast('Erro ao exportar HTML: ' + err.message, 'alert-circle');
       }
     }
 
-    /* Event Listeners */
-    document.addEventListener('DOMContentLoaded', () => {
+    function showPublishModal(htmlText, wasDownloaded) {
+      let modal = document.getElementById('publishModal');
+      if (modal) modal.remove();
+      modal = document.createElement('div');
+      modal.id = 'publishModal';
+      modal.className = 'fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4';
+      modal.innerHTML = `
+        <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col shadow-2xl">
+          <div class="p-4 bg-gradient-to-r from-brand-600 to-brand-800 text-white flex items-center justify-between">
+            <h3 class="font-bold flex items-center gap-2"><i data-lucide="rocket" class="w-4 h-4"></i>HTML Atualizado Pronto</h3>
+            <button onclick="document.getElementById('publishModal').remove()" class="text-white hover:bg-brand-700 rounded p-1.5"><i data-lucide="x" class="w-4 h-4"></i></button>
+          </div>
+          <div class="p-4 overflow-y-auto text-sm text-slate-700 flex-1">
+            <p class="mb-3"><strong>Data:</strong> <span id="publishModalData"></span> &nbsp;·&nbsp; <strong>Tamanho:</strong> <span id="publishModalSize"></span></p>
+            <div class="mb-3 p-3 bg-amber-50 border border-amber-200 rounded-lg">
+              <p class="font-semibold text-amber-900 mb-1">Status do download automático</p>
+              <p id="publishModalStatus" class="text-amber-800 text-xs"></p>
+            </div>
+            <ol class="list-decimal pl-5 text-xs text-slate-700 mb-3 space-y-1">
+              <li>Copie ou baixe o conteúdo abaixo (≈ 3 MB).</li>
+              <li>No GitHub, abra o repo <code>dashboard-cauc</code> e faça upload do arquivo como <code>index.html</code>.</li>
+              <li>Aguarde 1–2 min para o GitHub Pages atualizar.</li>
+            </ol>
+            <textarea id="publishModalText" readonly class="w-full h-72 font-mono text-[10px] border rounded p-2 bg-slate-50"></textarea>
+            <div class="mt-3 flex flex-wrap gap-2">
+              <button onclick="copyPublishHtml()" class="px-3 py-1.5 bg-brand-600 text-white rounded text-xs font-semibold hover:bg-brand-700 flex items-center gap-1.5"><i data-lucide="copy" class="w-3.5 h-3.5"></i>Copiar HTML</button>
+              <button onclick="downloadPublishHtml()" class="px-3 py-1.5 bg-slate-700 text-white rounded text-xs font-semibold hover:bg-slate-800 flex items-center gap-1.5"><i data-lucide="download" class="w-3.5 h-3.5"></i>Baixar novamente</button>
+              <button onclick="document.getElementById('publishModal').remove()" class="px-3 py-1.5 bg-slate-200 text-slate-700 rounded text-xs font-semibold hover:bg-slate-300 flex items-center gap-1.5"><i data-lucide="x" class="w-3.5 h-3.5"></i>Fechar</button>
+            </div>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(modal);
+
+      window.copyPublishHtml = async function () {
+        const ta = document.getElementById('publishModalText');
+        try {
+          await navigator.clipboard.writeText(ta.value);
+          showToast('HTML copiado para a área de transferência!', 'check');
+        } catch (e) {
+          ta.select();
+          try { document.execCommand('copy'); showToast('HTML copiado pelo método legado.', 'check'); }
+          catch (e2) { showToast('Falha ao copiar. Use o botão Baixar novamente.', 'alert-circle'); }
+        }
+      };
+      window.downloadPublishHtml = function () {
+        const blob = new Blob([document.getElementById('publishModalText').value], { type: 'text/html;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url; a.download = 'index.html'; a.style.display = 'none';
+        document.body.appendChild(a); a.click();
+        setTimeout(() => { try { document.body.removeChild(a); URL.revokeObjectURL(url); } catch(e){} }, 1500);
+        showToast('Download iniciado.', 'download');
+      };
+
+      document.getElementById('publishModalText').value = htmlText;
+      document.getElementById('publishModalData').textContent = appState.dataPesquisa || 'data atual';
+      const kb = (htmlText.length / 1024).toFixed(0) + ' KB';
+      document.getElementById('publishModalSize').textContent = kb;
+      document.getElementById('publishModalStatus').textContent = wasDownloaded
+        ? '✅ O navegador iniciou o download automaticamente. Confira sua pasta de Downloads.'
+        : '⚠ Download automático bloqueado pelo navegador/iframe. Use os botões abaixo para Copiar ou Baixar.';
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+    }
+/* Event Listeners */
+    document.
+    /* AUTO-FETCH: tenta carregar CSV mais recente do mesmo diretório.
+       GitHub Pages serve com protocolo http(s), então fetch funciona.
+       Se falhar (file:// ou offline), mantém o INITIAL_STATE embutido. */
+    const EXPECTED_CSV_NAMES = ['dados-cauc.csv', 'situacao.csv', 'dados.csv'];
+    async function loadCsvFromRepo() {
+      for (const name of EXPECTED_CSV_NAMES) {
+        try {
+          const url = `${name}?v=${Date.now()}`;
+          const resp = await fetch(url, { cache: 'no-store' });
+          if (!resp.ok) continue;
+          const text = await resp.text();
+          if (!text || !text.trim()) continue;
+          console.log('[auto-fetch] CSV atualizado:', name);
+          const file = new File([text], name, { type: 'text/csv' });
+          parseCsvData(text, file.name);
+          const bannerEl = document.getElementById('updateBanner');
+          if (bannerEl) {
+            document.getElementById('updateBannerText').textContent =
+              `Dados atualizados automaticamente: ${file.name} (cache do navegador contornado)`;
+            bannerEl.classList.remove('hidden');
+            setTimeout(() => bannerEl.classList.add('hidden'), 5000);
+          }
+          return true;
+        } catch (err) {
+          console.log('[auto-fetch] falhou em', name, '-', err.message);
+        }
+      }
+      console.log('[auto-fetch] nenhum CSV encontrado; usando snapshot embutido');
+      return false;
+    }
+addEventListener('DOMContentLoaded', () => {
       updateAllView();
+      loadCsvFromRepo();
 
       // Drag and drop do arquivo CSV
       const dropzone = document.getElementById('dropzone');
